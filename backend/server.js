@@ -420,31 +420,7 @@ app.post('/admin/testimonials/edit/:id', async (req, res) => {
     }
 });
 
-app.get('/api/seed-content', async (req, res) => {
-    try {
-        const blogCount = await Blog.countDocuments();
-        if (blogCount === 0) {
-            await Blog.create([
-                { title: 'The Rise of Sustainable Commercial Spaces', category: 'Architecture', imageUrl: 'asset/card_commercial_1783442002069.jpg', content: 'How modern businesses are prioritizing eco-friendly materials and energy-efficient designs in their new headquarters.' },
-                { title: 'Maximizing Natural Light in Residential Villas', category: 'Interior', imageUrl: 'asset/idea_bedroom_1783442834138.jpg', content: 'Strategic placement of floor-to-ceiling windows to enhance mood and reduce electricity consumption.' },
-                { title: 'Dark Charcoal vs. White Marble', category: 'Design', imageUrl: 'asset/project_kitchen_1783442824055.jpg', content: 'Exploring the striking visual contrast that is dominating luxury kitchen designs this year.' },
-                { title: 'The Future of Smart Buildings', category: 'Construction', imageUrl: 'asset/hero_building_1783441971426.jpg', content: 'Integrating AI and IoT sensors directly into the framework of modern commercial buildings for better efficiency.' }
-            ]);
-        }
-        
-        const testCount = await Testimonial.countDocuments();
-        if (testCount === 0) {
-            await Testimonial.create([
-                { clientName: 'Amit Sharma', projectName: 'Oasis Green Villas', quote: 'Indraprastha delivered our dream home exactly on schedule. The attention to detail in the interior finishes is simply outstanding.' },
-                { clientName: 'Priya Desai', projectName: 'The Skyline Elite', quote: 'Their commercial spaces are built for the future. The smart building integration has improved our operational efficiency by 30%.' },
-                { clientName: 'Rahul Verma', projectName: 'Apex IT Park', quote: 'Professional, transparent, and highly skilled. They managed the entire construction process seamlessly without any cost overruns.' }
-            ]);
-        }
-        res.send('Seeded blogs and testimonials successfully!');
-    } catch(err) {
-        res.status(500).send(err.message);
-    }
-});
+
 // Export the app for Vercel
 module.exports = app;
 
@@ -454,6 +430,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
