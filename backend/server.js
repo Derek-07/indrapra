@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session');
@@ -59,7 +59,7 @@ async function loadContentCache(callback) {
 // Database Connection
 mongoose.connect(MONGO_URI)
     .then(async () => {
-        console.log('✅ Connected to MongoDB Atlas');
+        console.log('âœ… Connected to MongoDB Atlas');
         
         // Seed initial content if DB is empty
         const contentCount = await Content.countDocuments();
@@ -76,8 +76,8 @@ mongoose.connect(MONGO_URI)
         const adminExists = await User.findOne({ role: 'admin' });
         if (!adminExists) {
             await User.create({
-                email: 'admin@indraprastha.com',
-                password: 'admin123',
+                email: 'Admin@gmail.com',
+                password: 'Admin@12345',
                 status: 'Approved',
                 role: 'admin'
             });
@@ -219,3 +219,4 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
