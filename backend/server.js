@@ -1,7 +1,7 @@
 ﻿const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const session = require('express-session');
+const session = require('cookie-session');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -234,6 +234,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
