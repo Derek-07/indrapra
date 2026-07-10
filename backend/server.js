@@ -30,6 +30,7 @@ const projectSchema = new mongoose.Schema({
     status: { type: String, default: 'Planning' }, // Planning, Construction, Finishing, Completed
     progress: { type: Number, default: 0 },
     managerName: { type: String, default: 'Admin' },
+    category: { type: String, default: 'residential' },
     imageUrl: { type: String, default: '' },
     description: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now }
@@ -369,6 +370,7 @@ app.post('/admin/projects/edit/:id', async (req, res) => {
             status: req.body.status,
             progress: req.body.progress,
             managerName: req.body.managerName,
+            category: req.body.category.toLowerCase(),
             imageUrl: req.body.imageUrl
         });
         res.redirect('/admin');
@@ -396,6 +398,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
