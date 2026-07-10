@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session');
@@ -96,22 +96,7 @@ async function connectDB() {
 app.use(async (req, res, next) => {
     await connectDB();
     next();
-});        // Seed admin user if not exists
-        const adminExists = await User.findOne({ role: 'admin' });
-        if (!adminExists) {
-            await User.create({
-                email: 'Admin@gmail.com',
-                password: 'Admin@12345',
-                status: 'Approved',
-                role: 'admin'
-            });
-            console.log('Seeded default Admin user');
-        }
-
-        // Load Cache
-        loadContentCache();
-    })
-    .catch(err => console.error('MongoDB connection error:', err));
+});
 
 
 // Middleware to inject site content into templates instantly
