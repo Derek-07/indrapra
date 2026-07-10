@@ -359,6 +359,23 @@ app.post('/admin/testimonials/delete/:id', async (req, res) => {
     }
 });
 
+// Project Edit
+app.post('/admin/projects/edit/:id', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Project.findByIdAndUpdate(req.params.id, {
+            title: req.body.title,
+            clientName: req.body.clientName,
+            status: req.body.status,
+            progress: req.body.progress,
+            managerName: req.body.managerName,
+            imageUrl: req.body.imageUrl
+        });
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error updating project');
+    }
+});
 // Project Delete
 app.post('/admin/projects/delete/:id', async (req, res) => {
     if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
@@ -379,6 +396,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
