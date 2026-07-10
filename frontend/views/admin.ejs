@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,17 @@
                 }
             }
         }
+        
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(t => {
+                t.classList.remove('bg-brandTeal', 'text-white');
+                t.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.remove('bg-gray-200', 'text-gray-700');
+            document.getElementById('btn-' + tabId).classList.add('bg-brandTeal', 'text-white');
+        }
     </script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -25,73 +36,148 @@
             <div class="bg-brandGold text-brandTeal font-bold px-2 py-1 rounded">ADMIN</div>
             <h1 class="text-xl font-bold tracking-widest uppercase">Indraprastha CMS</h1>
         </div>
-        <a href="/api/logout" class="text-sm font-semibold hover:text-brandGold transition-colors">Logout</a>
+        <div class="flex items-center gap-6">
+            <a href="/" target="_blank" class="text-sm font-semibold hover:text-brandGold transition-colors">View Live Site &rarr;</a>
+            <a href="/api/logout" class="text-sm font-semibold bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition-colors">Logout</a>
+        </div>
     </nav>
 
-    <div class="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Left: User Management -->
-        <div class="lg:col-span-1">
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2">User Registrations</h2>
-                <p class="text-sm text-gray-500 mb-6">Approve or reject new users. Users cannot log in until approved.</p>
+    <div class="container mx-auto p-6">
+        <!-- Tabs -->
+        <div class="flex gap-4 mb-8">
+            <button id="btn-tab-users" onclick="switchTab('tab-users')" class="tab-btn bg-brandTeal text-white font-bold px-6 py-3 rounded-lg shadow transition-colors">Users & Assignment</button>
+            <button id="btn-tab-projects" onclick="switchTab('tab-projects')" class="tab-btn bg-gray-200 text-gray-700 font-bold px-6 py-3 rounded-lg shadow transition-colors">Projects Manager</button>
+            <button id="btn-tab-content" onclick="switchTab('tab-content')" class="tab-btn bg-gray-200 text-gray-700 font-bold px-6 py-3 rounded-lg shadow transition-colors">Website Content (CMS)</button>
+        </div>
 
-                <div class="space-y-4">
-                    <% if (users.length === 0) { %>
-                        <p class="text-sm text-gray-500 italic">No users found.</p>
-                    <% } %>
-                    
-                    <% users.forEach(user => { %>
-                        <div class="border rounded-lg p-4 <%= user.status === 'Pending' ? 'bg-yellow-50 border-yellow-200' : (user.status === 'Approved' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200') %>">
-                            <div class="flex justify-between items-start mb-2">
-                                <div>
-                                    <p class="font-bold text-sm"><%= user.email %></p>
-                                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full 
-                                        <%= user.status === 'Pending' ? 'bg-yellow-200 text-yellow-800' : (user.status === 'Approved' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800') %>">
-                                        <%= user.status %>
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <% if (user.status === 'Pending') { %>
-                            <div class="flex gap-2 mt-3">
-                                <form action="/admin/approve/<%= user.id %>" method="POST" class="flex-1">
-                                    <button class="w-full text-xs font-bold bg-green-500 text-white py-1.5 rounded hover:bg-green-600 transition-colors">Approve</button>
-                                </form>
-                                <form action="/admin/reject/<%= user.id %>" method="POST" class="flex-1">
-                                    <button class="w-full text-xs font-bold bg-red-500 text-white py-1.5 rounded hover:bg-red-600 transition-colors">Reject</button>
-                                </form>
-                            </div>
+        <!-- Tab: Users & Assignments -->
+        <div id="tab-users" class="tab-content">
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-2xl font-bold mb-2">User & Client Management</h2>
+                <p class="text-gray-500 mb-8">Assign specific projects to signed-up users. They will see these details on their dashboard.</p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b border-gray-200">
+                                <th class="p-4 font-bold text-gray-700">Email</th>
+                                <th class="p-4 font-bold text-gray-700">Status</th>
+                                <th class="p-4 font-bold text-gray-700">Assigned Project</th>
+                                <th class="p-4 font-bold text-gray-700">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (users.length === 0) { %>
+                                <tr><td colspan="4" class="p-4 text-center text-gray-500 italic">No users found.</td></tr>
                             <% } %>
-                        </div>
-                    <% }) %>
+                            
+                            <% users.forEach(user => { %>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="p-4 font-semibold"><%= user.email %></td>
+                                    <td class="p-4">
+                                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-800">Active</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <form action="/admin/users/assign" method="POST" class="flex gap-2">
+                                            <input type="hidden" name="userId" value="<%= user.id %>">
+                                            <select name="projectId" class="border rounded px-3 py-2 w-full focus:ring-2 focus:ring-brandTeal outline-none text-sm">
+                                                <option value="">-- No Project Assigned --</option>
+                                                <% projects.forEach(proj => { %>
+                                                    <option value="<%= proj.id %>" <%= (user.assignedProject && user.assignedProject.id === proj.id) ? 'selected' : '' %>><%= proj.title %> - <%= proj.clientName %></option>
+                                                <% }) %>
+                                            </select>
+                                            <button type="submit" class="bg-brandTeal text-white px-4 py-2 rounded text-sm font-bold hover:bg-brandGold transition-colors">Assign</button>
+                                        </form>
+                                    </td>
+                                    <td class="p-4">
+                                        <!-- Keep simple for now -->
+                                        <span class="text-xs text-gray-400">Settings managed automatically</span>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <!-- Right: Content Management -->
-        <div class="lg:col-span-2">
+        <!-- Tab: Projects Manager -->
+        <div id="tab-projects" class="tab-content hidden space-y-8">
             <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex justify-between items-center border-b pb-2 mb-4">
-                    <h2 class="text-xl font-bold">Content Management (CMS)</h2>
-                    <a href="/" target="_blank" class="text-xs font-bold text-brandTeal hover:underline">View Live Website &rarr;</a>
-                </div>
-                <p class="text-sm text-gray-500 mb-6">Edit the text that appears on the live website.</p>
+                <h2 class="text-2xl font-bold mb-2">Create New Project</h2>
+                <p class="text-gray-500 mb-6">Create a project here, then go to the Users tab to assign it to a client.</p>
+
+                <form action="/admin/projects/new" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Project Title</label>
+                        <input type="text" name="title" required placeholder="e.g. Luxury Villa 104" class="w-full border px-4 py-3 rounded-lg focus:ring-2 focus:ring-brandTeal outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Client Name</label>
+                        <input type="text" name="clientName" required placeholder="e.g. Mr. Sharma" class="w-full border px-4 py-3 rounded-lg focus:ring-2 focus:ring-brandTeal outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Project Status</label>
+                        <select name="status" class="w-full border px-4 py-3 rounded-lg focus:ring-2 focus:ring-brandTeal outline-none">
+                            <option value="Planning">Planning & Design</option>
+                            <option value="Construction">Under Construction</option>
+                            <option value="Finishing">Finishing Touches</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Progress (%)</label>
+                        <input type="number" name="progress" min="0" max="100" value="0" class="w-full border px-4 py-3 rounded-lg focus:ring-2 focus:ring-brandTeal outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Manager Name</label>
+                        <input type="text" name="managerName" value="Admin Team" class="w-full border px-4 py-3 rounded-lg focus:ring-2 focus:ring-brandTeal outline-none">
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <button type="submit" class="bg-brandGold text-brandTeal font-bold px-8 py-3 rounded-lg hover:bg-yellow-500 transition-colors shadow-lg">Create Project</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Existing Projects List -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <% projects.forEach(proj => { %>
+                    <div class="bg-white rounded-xl shadow p-6 border-t-4 border-brandTeal">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-bold text-lg"><%= proj.title %></h3>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-bold"><%= proj.progress %>%</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2"><span class="font-bold">Client:</span> <%= proj.clientName %></p>
+                        <p class="text-sm text-gray-500 mb-2"><span class="font-bold">Status:</span> <%= proj.status %></p>
+                        <p class="text-sm text-gray-500"><span class="font-bold">Manager:</span> <%= proj.managerName %></p>
+                    </div>
+                <% }) %>
+                <% if (projects.length === 0) { %>
+                    <p class="text-gray-500 italic md:col-span-3">No projects created yet.</p>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Tab: CMS Content -->
+        <div id="tab-content" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-2xl font-bold mb-2">Website Content (CMS)</h2>
+                <p class="text-gray-500 mb-8">Edit the text that appears on the live website. You can add more keys in the future to control every single word on the site!</p>
 
                 <form action="/admin/content/update" method="POST" class="space-y-6">
                     <% contents.forEach(item => { %>
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <label class="block text-xs font-bold text-brandTeal uppercase tracking-wider mb-2">Key: <%= item.key %></label>
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                            <label class="block text-sm font-bold text-brandTeal uppercase tracking-wider mb-3">Key: <%= item.key %></label>
                             <% if (item.value.length > 50) { %>
-                                <textarea name="<%= item.key %>" rows="3" class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-brandGold outline-none"><%= item.value %></textarea>
+                                <textarea name="<%= item.key %>" rows="4" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brandGold outline-none text-gray-700"><%= item.value %></textarea>
                             <% } else { %>
-                                <input type="text" name="<%= item.key %>" value="<%= item.value %>" class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-brandGold outline-none">
+                                <input type="text" name="<%= item.key %>" value="<%= item.value %>" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brandGold outline-none text-gray-700">
                             <% } %>
                         </div>
                     <% }) %>
 
-                    <div class="flex justify-end pt-4">
-                        <button type="submit" class="bg-brandTeal text-white font-bold px-6 py-2 rounded-lg hover:bg-brandGold transition-colors shadow-lg">Save All Changes</button>
+                    <div class="flex justify-end pt-4 sticky bottom-6">
+                        <button type="submit" class="bg-brandTeal text-white font-bold px-8 py-4 rounded-xl hover:bg-brandGold transition-colors shadow-2xl text-lg w-full md:w-auto">Save All Content Changes</button>
                     </div>
                 </form>
             </div>

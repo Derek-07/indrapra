@@ -24,11 +24,22 @@ app.use(session({
 }));
 
 // Mongoose Models
+const projectSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    clientName: { type: String, required: true },
+    status: { type: String, default: 'Planning' }, // Planning, Construction, Finishing, Completed
+    progress: { type: Number, default: 0 },
+    managerName: { type: String, default: 'Admin' },
+    createdAt: { type: Date, default: Date.now }
+});
+const Project = mongoose.model('Project', projectSchema);
+
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    status: { type: String, default: 'Pending' },
+    status: { type: String, default: 'Approved' },
     role: { type: String, default: 'user' },
+    assignedProject: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', default: null },
     createdAt: { type: Date, default: Date.now }
 });
 const User = mongoose.model('User', userSchema);
@@ -127,14 +138,16 @@ app.get('/login.html', (req, res) => res.render('login', { error: null }));
 app.get('/signup.html', (req, res) => res.render('signup', { error: null, success: null }));
 
 // Dashboard (Protected)
-app.get('/dashboard.html', (req, res) => {
+app.get('/dashboard.html', async (req, res) => {
     if (!req.session.user || req.session.user.role !== 'user') {
         return res.redirect('/login.html');
     }
-    if (req.session.user.status !== 'Approved') {
-        return res.render('login', { error: 'Your account is pending admin approval.' });
+    try {
+        const userWithProject = await User.findById(req.session.user._id).populate('assignedProject');
+        res.render('dashboard', { user: userWithProject });
+    } catch (err) {
+        res.status(500).send('Error loading dashboard');
     }
-    res.render('dashboard');
 });
 
 // Auth API endpoints
@@ -186,9 +199,10 @@ app.get('/admin', async (req, res) => {
     }
     
     try {
-        const users = await User.find({ role: 'user' }).sort({ createdAt: -1 });
+        const users = await User.find({ role: 'user' }).populate('assignedProject').sort({ createdAt: -1 });
         const contents = await Content.find({});
-        res.render('admin', { users: users || [], contents: contents || [] });
+        const projects = await Project.find({}).sort({ createdAt: -1 });
+        res.render('admin', { users: users || [], contents: contents || [], projects: projects || [] });
     } catch (err) {
         res.status(500).send('Error loading admin dashboard');
     }
@@ -225,6 +239,36 @@ app.post('/admin/content/update', async (req, res) => {
     }
 });
 
+// Project Routes
+app.post('/admin/projects/new', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Project.create({
+            title: req.body.title,
+            clientName: req.body.clientName,
+            status: req.body.status,
+            progress: req.body.progress || 0,
+            managerName: req.body.managerName || 'Admin'
+        });
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error creating project');
+    }
+});
+
+app.post('/admin/users/assign', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        const { userId, projectId } = req.body;
+        await User.findByIdAndUpdate(userId, { 
+            assignedProject: projectId || null 
+        });
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error assigning project');
+    }
+});
+
 // Export the app for Vercel
 module.exports = app;
 
@@ -234,6 +278,9 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
+
+
 
 
 

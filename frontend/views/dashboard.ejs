@@ -1,13 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Dashboard | Indraprastha</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -19,43 +17,41 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-darkBg font-sans text-gray-800 transition-colors duration-300">
 
     <div class="flex h-screen overflow-hidden">
         
         <!-- Sidebar -->
-        <aside class="hidden md:flex flex-col w-64 bg-white dark:bg-darkSurface border-r border-gray-200 dark:border-gray-800 transition-colors">
-            <div class="p-6 border-b border-gray-200 dark:border-gray-800 flex items-center justify-center">
-                <a href="index.html">
-                    <img src="asset/image/logo/logo_transparent.png" alt="Indraprastha Logo" class="h-10 object-contain bg-brandTeal/95 dark:bg-transparent rounded-xl px-3 py-1 shadow-lg dark:shadow-none">
+        <aside class="hidden md:flex flex-col w-64 bg-white dark:bg-darkSurface border-r border-gray-200 dark:border-gray-800 h-full shadow-sm z-20">
+            <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="/asset/image/logo/logo_transparent.png" alt="Logo" class="h-8">
+                    <span class="font-serif font-bold text-lg dark:text-white">Indraprastha</span>
                 </a>
             </div>
-            <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-brandTeal/10 dark:bg-brandGold/10 text-brandTeal dark:text-brandGold rounded-xl font-semibold transition-colors">
+            
+            <div class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-brandTeal text-brandGold rounded-xl font-bold transition-all shadow-md">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    Overview
+                    Dashboard
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    Timeline & Progress
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors font-medium">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl font-medium transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                    Site Photos
+                    Photos & Media
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Payments
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors font-medium">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl font-medium transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     Documents
                 </a>
-            </nav>
-            <div class="p-4 border-t border-gray-200 dark:border-gray-800">
-                <a href="login.html" class="flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-colors font-semibold">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Payments
+                </a>
+            </div>
+
+            <div class="p-4 mt-auto border-t border-gray-100 dark:border-gray-800">
+                <a href="/api/logout" class="flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl font-bold transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                     Logout
                 </a>
@@ -63,190 +59,131 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 flex flex-col overflow-hidden relative">
+        <main class="flex-1 h-full overflow-y-auto bg-gray-50 dark:bg-darkBg relative pb-20 md:pb-0">
             <!-- Header -->
-            <header class="flex items-center justify-between p-6 bg-white/80 dark:bg-darkSurface/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 z-10">
-                <div class="flex items-center gap-4">
-                    <div class="md:hidden">
-                        <img src="asset/image/logo/logo_transparent.png" alt="Logo" class="h-8 object-contain bg-brandTeal/95 dark:bg-transparent rounded px-2 py-1">
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold dark:text-white">Welcome, Mr. Sharma</h1>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Project: Villa 42, Green Valley</p>
-                    </div>
+            <header class="sticky top-0 z-30 bg-white/80 dark:bg-darkSurface/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-6 py-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold font-serif dark:text-white">Welcome, <%= user.email.split('@')[0] %></h1>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Your portal is up to date.</p>
                 </div>
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 4.22a1 1 0 011.415 0l.708.708a1 1 0 01-1.414 1.414l-.708-.708a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM14.93 15.637a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 18a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zm-4.22-4.22a1 1 0 01-1.415 0l-.708-.708a1 1 0 011.414-1.414l.708.708a1 1 0 010 1.414zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm3.07-5.637a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 5a5 5 0 100 10 5 5 0 000-10z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    </button>
-                    <div class="w-10 h-10 rounded-full bg-brandGold flex items-center justify-center font-bold text-brandTeal text-lg">S</div>
+                <!-- Profile Avatar -->
+                <div class="w-10 h-10 rounded-full bg-brandTeal text-brandGold flex items-center justify-center font-bold shadow-md cursor-pointer border-2 border-transparent hover:border-brandGold transition-all">
+                    <%= user.email.charAt(0).toUpperCase() %>
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
-            <div class="flex-1 overflow-y-auto p-6 md:p-8 pb-24 md:pb-8">
+            <div class="p-6 max-w-6xl mx-auto">
                 
-                <!-- Demo Banner -->
-                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300 p-4 rounded-xl mb-8 flex items-start gap-4">
-                    <svg class="w-6 h-6 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <div>
-                        <strong class="block mb-1">Demo Client Portal</strong>
-                        <span class="text-sm">This is a showcase of the client dashboard. In a live environment, clients can log in here to see real-time updates, photos, and payment milestones for their specific construction project.</span>
+                <% if (!user.assignedProject) { %>
+                    <!-- Empty State for Unassigned Users -->
+                    <div class="bg-white dark:bg-darkSurface p-12 rounded-2xl shadow-sm text-center border border-gray-100 dark:border-gray-800">
+                        <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4 dark:text-white">Preparing Your Dashboard</h2>
+                        <p class="text-gray-500 max-w-md mx-auto mb-8">Welcome to Indraprastha! Our team is currently preparing your digital workspace. Once your project manager assigns your project, all details will appear here.</p>
+                        <a href="/reach-us.html" class="inline-block bg-brandTeal text-white font-bold px-8 py-3 rounded-lg hover:bg-brandGold transition-colors">Contact Support</a>
                     </div>
-                </div>
-
-                <!-- KPI Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-2">Project Status</p>
-                        <h3 class="text-2xl font-bold text-brandTeal dark:text-brandGold">In Progress</h3>
-                    </div>
-                    <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-2">Est. Completion</p>
-                        <h3 class="text-2xl font-bold dark:text-white">Nov 2026</h3>
-                    </div>
-                    <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-2">Total Budget</p>
-                        <h3 class="text-2xl font-bold dark:text-white">$450,000</h3>
-                    </div>
-                    <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-2">Paid to Date</p>
-                        <h3 class="text-2xl font-bold dark:text-white">$150,000</h3>
-                    </div>
-                </div>
-
-                <!-- Main Layout -->
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                    
-                    <!-- Left Col: Timeline & Tasks -->
-                    <div class="xl:col-span-2 space-y-8">
+                <% } else { %>
+                    <!-- Active Project State -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         
-                        <!-- Progress Timeline -->
-                        <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                            <h3 class="text-lg font-bold dark:text-white mb-6">Construction Timeline</h3>
-                            <div class="relative">
-                                <!-- Progress Line -->
-                                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
-                                <div class="absolute left-6 top-0 h-1/3 w-0.5 bg-brandGold z-0"></div>
-                                
-                                <ul class="space-y-8 relative z-10">
-                                    <li class="flex gap-6">
-                                        <div class="w-12 h-12 rounded-full bg-brandGold text-white flex items-center justify-center font-bold shadow-lg flex-shrink-0">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold dark:text-white text-lg">Phase 1: Foundation</h4>
-                                            <p class="text-sm text-gray-500 mt-1">Completed on March 15, 2026</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-6">
-                                        <div class="w-12 h-12 rounded-full bg-brandTeal dark:bg-white text-white dark:text-brandTeal flex items-center justify-center font-bold shadow-lg flex-shrink-0 shadow-brandTeal/30 border-4 border-white dark:border-darkSurface">
-                                            <div class="w-3 h-3 rounded-full bg-brandGold animate-pulse"></div>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold dark:text-white text-lg">Phase 2: Framing & Roofing</h4>
-                                            <p class="text-sm text-brandGold font-semibold mt-1">Currently in progress (60% complete)</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-6">
-                                        <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-400 flex items-center justify-center font-bold flex-shrink-0 border-4 border-white dark:border-darkSurface">
-                                            3
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-gray-400 text-lg">Phase 3: Plumbing & Electrical</h4>
-                                            <p class="text-sm text-gray-500 mt-1">Scheduled for June 2026</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex gap-6">
-                                        <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-400 flex items-center justify-center font-bold flex-shrink-0 border-4 border-white dark:border-darkSurface">
-                                            4
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-gray-400 text-lg">Phase 4: Interior Finishes</h4>
-                                            <p class="text-sm text-gray-500 mt-1">Scheduled for August 2026</p>
+                        <!-- Left Col: Project Status & Photos -->
+                        <div class="lg:col-span-2 space-y-8">
+                            
+                            <!-- Status Card -->
+                            <div class="bg-white dark:bg-darkSurface p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                                    <div>
+                                        <h2 class="text-2xl md:text-3xl font-bold dark:text-white mb-2"><%= user.assignedProject.title %></h2>
+                                        <p class="text-gray-500 font-medium">Status: <span class="text-brandTeal dark:text-brandGold font-bold"><%= user.assignedProject.status %></span></p>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 px-4 py-2 rounded-lg font-bold border border-green-100 dark:border-green-800 flex items-center gap-2">
+                                        <span class="relative flex h-3 w-3">
+                                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                        </span>
+                                        Active
+                                    </div>
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-4 flex justify-between items-end">
+                                    <span class="font-bold text-gray-700 dark:text-gray-300">Project Completion</span>
+                                    <span class="text-2xl font-bold text-brandTeal dark:text-brandGold"><%= user.assignedProject.progress %>%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-4 mb-8 overflow-hidden shadow-inner">
+                                    <div class="bg-brandTeal h-4 rounded-full transition-all duration-1000 ease-out" style="width: <%= user.assignedProject.progress %>%"></div>
+                                </div>
+
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-500 mb-1 font-semibold uppercase tracking-wider">Start Date</p>
+                                        <p class="font-bold dark:text-white">Oct 2023</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-500 mb-1 font-semibold uppercase tracking-wider">Est. Handover</p>
+                                        <p class="font-bold dark:text-white">Mar 2024</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-500 mb-1 font-semibold uppercase tracking-wider">Payments</p>
+                                        <p class="font-bold text-green-600">On Track</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-500 mb-1 font-semibold uppercase tracking-wider">Approvals</p>
+                                        <p class="font-bold text-yellow-600">1 Pending</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Col: Docs & Manager -->
+                        <div class="space-y-8">
+                            
+                            <!-- Project Manager -->
+                            <div class="bg-brandTeal rounded-2xl p-6 text-white relative overflow-hidden shadow-lg">
+                                <div class="absolute -right-4 -top-4 w-24 h-24 bg-brandGold rounded-full opacity-20 blur-xl"></div>
+                                <h3 class="text-lg font-bold mb-4 relative z-10">Your Project Manager</h3>
+                                <div class="flex items-center gap-4 mb-6 relative z-10">
+                                    <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold border border-white/30">
+                                        <%= user.assignedProject.managerName.charAt(0) %>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg"><%= user.assignedProject.managerName %></h4>
+                                        <p class="text-sm text-brandGold font-medium">Lead Engineer</p>
+                                    </div>
+                                </div>
+                                <a href="/reach-us.html" class="block w-full py-3 bg-brandGold text-brandTeal text-center rounded-lg font-bold hover:bg-yellow-500 transition-colors shadow-lg relative z-10">Contact <%= user.assignedProject.managerName.split(' ')[0] %></a>
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                                <h3 class="text-lg font-bold dark:text-white mb-6">Important Documents</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center justify-between p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="p-2 bg-red-50 dark:bg-red-900/20 rounded-lg text-red-500">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>
+                                            </div>
+                                            <span class="font-medium text-sm dark:text-gray-300 group-hover:text-brandTeal transition-colors">Contract_Signed.pdf</span>
                                         </div>
                                     </li>
                                 </ul>
+                                <button class="w-full mt-4 py-2 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-500 hover:text-brandTeal hover:border-brandTeal transition-colors">View All Documents</button>
                             </div>
-                        </div>
-
-                        <!-- Recent Photos -->
-                        <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-lg font-bold dark:text-white">Recent Site Photos</h3>
-                                <a href="#" class="text-sm font-semibold text-brandGold hover:underline">View All</a>
-                            </div>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-32 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity">
-                                <img src="asset/hero_building_1783441971426.jpg" class="w-full h-32 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity">
-                                <div class="w-full h-32 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                    <span class="text-sm font-medium text-gray-500">+12 More</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Right Col: Docs & Manager -->
-                    <div class="space-y-8">
-                        
-                        <!-- Project Manager -->
-                        <div class="bg-brandTeal rounded-2xl p-6 text-white relative overflow-hidden">
-                            <div class="absolute -right-4 -top-4 w-24 h-24 bg-brandGold rounded-full opacity-20 blur-xl"></div>
-                            <h3 class="text-lg font-bold mb-4 relative z-10">Your Project Manager</h3>
-                            <div class="flex items-center gap-4 mb-4 relative z-10">
-                                <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold">AJ</div>
-                                <div>
-                                    <h4 class="font-bold">Amit Jain</h4>
-                                    <p class="text-sm text-gray-300">Senior Engineer</p>
-                                </div>
-                            </div>
-                            <a href="reach-us.html" class="block w-full py-2 bg-brandGold text-brandTeal text-center rounded-lg font-bold hover:bg-yellow-500 transition-colors relative z-10">Message Amit</a>
-                        </div>
-
-                        <!-- Documents -->
-                        <div class="bg-white dark:bg-darkSurface p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                            <h3 class="text-lg font-bold dark:text-white mb-6">Important Documents</h3>
-                            <ul class="space-y-4">
-                                <li class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
-                                    <div class="flex items-center gap-3">
-                                        <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>
-                                        <span class="font-medium text-sm dark:text-gray-300">Signed_Contract.pdf</span>
-                                    </div>
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                </li>
-                                <li class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
-                                    <div class="flex items-center gap-3">
-                                        <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>
-                                        <span class="font-medium text-sm dark:text-gray-300">Floor_Plan_v2.pdf</span>
-                                    </div>
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                </li>
-                                <li class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
-                                    <div class="flex items-center gap-3">
-                                        <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>
-                                        <span class="font-medium text-sm dark:text-gray-300">Invoice_Phase1.pdf</span>
-                                    </div>
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                </div>
+                <% } %>
 
             </div>
         </main>
         
-        <!-- Mobile Bottom Nav for Dashboard -->
-        <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-darkSurface/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-50 flex justify-around items-center pb-safe pt-2 px-2">
+        <!-- Mobile Bottom Nav -->
+        <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-darkSurface/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-50 flex justify-around items-center pb-safe pt-2 px-2 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
             <a href="#" class="flex flex-col items-center p-2 text-brandTeal dark:text-brandGold"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span class="text-[10px] font-bold">Home</span></a>
-            <a href="#" class="flex flex-col items-center p-2 text-gray-500 dark:text-gray-400"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-[10px]">Photos</span></a>
-            <a href="#" class="flex flex-col items-center p-2 text-gray-500 dark:text-gray-400"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span class="text-[10px]">Docs</span></a>
-            <a href="login.html" class="flex flex-col items-center p-2 text-red-400"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span class="text-[10px]">Logout</span></a>
+            <a href="/api/logout" class="flex flex-col items-center p-2 text-red-400"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span class="text-[10px]">Logout</span></a>
         </nav>
     </div>
-    
-    <script src="js/main.js"></script>
 </body>
 </html>
