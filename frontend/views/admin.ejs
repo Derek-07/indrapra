@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -101,7 +101,8 @@
             <div class="bg-white rounded-xl shadow p-6 border-l-4 border-brandTeal">
                 <h2 class="text-2xl font-bold mb-2">Create New Project</h2>
                 <p class="text-gray-500 mb-6">Create a project here. It will show up on the public Projects page AND can be assigned to a Client Dashboard.</p>
-                <form action="/admin/projects/new" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form action="/admin/projects/new" method="POST" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <h3 class="md:col-span-2 lg:col-span-3 font-bold text-gray-800 border-b pb-2">Basic Info</h3>
                     <div><label class="block text-sm font-bold text-gray-700 mb-2">Project Title</label><input type="text" name="title" required placeholder="Luxury Villa 104" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
                     <div><label class="block text-sm font-bold text-gray-700 mb-2">Client Name</label><input type="text" name="clientName" required placeholder="Mr. Sharma" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
                     <div>
@@ -114,12 +115,44 @@
                     </div>
                     <div><label class="block text-sm font-bold text-gray-700 mb-2">Progress (%)</label><input type="number" name="progress" min="0" max="100" value="0" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
                     <div><label class="block text-sm font-bold text-gray-700 mb-2">Manager Name</label><input type="text" name="managerName" value="Admin Team" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
-                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Image URL (Optional)</label><input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
-                    <div class="md:col-span-2 flex justify-end"><button type="submit" class="bg-brandTeal text-white font-bold px-8 py-3 rounded-lg hover:bg-brandGold transition-colors">Create Project</button></div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Category</label>
+                        <select name="category" class="w-full border px-4 py-3 rounded-lg outline-none">
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="interior">Interior</option>
+                            <option value="renovation">Renovation</option>
+                        </select>
+                    </div>
+
+                    <h3 class="md:col-span-2 lg:col-span-3 font-bold text-gray-800 border-b pb-2 mt-4">Project Details Page Info</h3>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Location</label><input type="text" name="location" placeholder="Downtown LA" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Year</label><input type="text" name="year" placeholder="2024" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Area</label><input type="text" name="area" placeholder="45,000 sq ft" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Duration</label><input type="text" name="duration" placeholder="18 months" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div class="md:col-span-2"><label class="block text-sm font-bold text-gray-700 mb-2">Key Features (comma-separated)</label><input type="text" name="keyFeatures" placeholder="LEED Gold certified, Smart building management" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div class="md:col-span-2"><label class="block text-sm font-bold text-gray-700 mb-2">Materials Used (comma-separated)</label><input type="text" name="materialsUsed" placeholder="Structural Steel, Tempered Glass" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div class="md:col-span-2 lg:col-span-3"><label class="block text-sm font-bold text-gray-700 mb-2">About This Project</label><textarea name="description" rows="3" class="w-full border px-4 py-3 rounded-lg outline-none" placeholder="A landmark 33-story commercial tower..."></textarea></div>
+
+                    <h3 class="md:col-span-2 lg:col-span-3 font-bold text-gray-800 border-b pb-2 mt-4">Images & Media</h3>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Banner Image URL</label><input type="text" name="bannerImageUrl" placeholder="Top full-width background image" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Card Image URL</label><input type="text" name="imageUrl" placeholder="Image for Projects Page grid" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Virtual Tour Image URL</label><input type="text" name="virtualTourUrl" placeholder="Image with 360 label" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    
+                    <h3 class="md:col-span-2 lg:col-span-3 font-bold text-gray-800 border-b pb-2 mt-4">Gallery Images (Up to 4)</h3>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Gallery 1 URL</label><input type="text" name="gallery1" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Gallery 2 URL</label><input type="text" name="gallery2" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Gallery 3 URL</label><input type="text" name="gallery3" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-2">Gallery 4 URL</label><input type="text" name="gallery4" class="w-full border px-4 py-3 rounded-lg outline-none"></div>
+
+                    <h3 class="md:col-span-2 lg:col-span-3 font-bold text-gray-800 border-b pb-2 mt-4">Client Testimonial</h3>
+                    <div class="md:col-span-2 lg:col-span-3"><label class="block text-sm font-bold text-gray-700 mb-2">Quote (will use Client Name from above)</label><textarea name="clientQuote" rows="2" class="w-full border px-4 py-3 rounded-lg outline-none" placeholder="Indraprastha delivered on time and beyond expectations."></textarea></div>
+
+                    <div class="md:col-span-2 lg:col-span-3 flex justify-end mt-4"><button type="submit" class="bg-brandTeal text-white font-bold px-8 py-3 rounded-lg hover:bg-brandGold transition-colors">Create Project</button></div>
                 </form>
             </div>
             
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <% projects.forEach(proj => { %>
                     <div class="bg-white rounded-xl shadow p-6 relative">
                         <% if(proj.imageUrl) { %><img src="<%= proj.imageUrl.startsWith('http') ? proj.imageUrl : '/' + proj.imageUrl %>" class="w-full h-32 object-cover rounded-lg mb-4"><% } %>
@@ -142,10 +175,7 @@
                                     <option value="Completed" <%= proj.status === 'Completed' ? 'selected' : '' %>>Completed</option>
                                 </select>
                             </div>
-                            <div><label class="block text-xs font-bold text-gray-700">Progress (%)</label><input type="number" name="progress" value="<%= proj.progress %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
-                            <div><label class="block text-xs font-bold text-gray-700">Manager</label><input type="text" name="managerName" value="<%= proj.managerName %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
-                            <div><label class="block text-xs font-bold text-gray-700">Image URL</label><input type="text" name="imageUrl" value="<%= proj.imageUrl %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
-                                                        <div><label class="block text-xs font-bold text-gray-700">Category</label>
+                            <div><label class="block text-xs font-bold text-gray-700">Category</label>
                                 <select name="category" class="w-full border px-2 py-1 rounded outline-none text-sm">
                                     <option value="residential" <%= proj.category === 'residential' ? 'selected' : '' %>>Residential</option>
                                     <option value="commercial" <%= proj.category === 'commercial' ? 'selected' : '' %>>Commercial</option>
@@ -153,6 +183,23 @@
                                     <option value="renovation" <%= proj.category === 'renovation' ? 'selected' : '' %>>Renovation</option>
                                 </select>
                             </div>
+                            <div><label class="block text-xs font-bold text-gray-700">Progress (%)</label><input type="number" name="progress" value="<%= proj.progress %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Manager</label><input type="text" name="managerName" value="<%= proj.managerName %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Location</label><input type="text" name="location" value="<%= proj.location %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Year</label><input type="text" name="year" value="<%= proj.year %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Area</label><input type="text" name="area" value="<%= proj.area %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Duration</label><input type="text" name="duration" value="<%= proj.duration %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Key Features</label><input type="text" name="keyFeatures" value="<%= (proj.keyFeatures || []).join(', ') %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Materials Used</label><input type="text" name="materialsUsed" value="<%= (proj.materialsUsed || []).join(', ') %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">About Project</label><textarea name="description" rows="2" class="w-full border px-2 py-1 rounded outline-none text-sm"><%= proj.description %></textarea></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Banner Image URL</label><input type="text" name="bannerImageUrl" value="<%= proj.bannerImageUrl %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Card Image URL</label><input type="text" name="imageUrl" value="<%= proj.imageUrl %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Virtual Tour Image URL</label><input type="text" name="virtualTourUrl" value="<%= proj.virtualTourUrl %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Gallery 1</label><input type="text" name="gallery1" value="<%= proj.gallery && proj.gallery[0] %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Gallery 2</label><input type="text" name="gallery2" value="<%= proj.gallery && proj.gallery[1] %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Gallery 3</label><input type="text" name="gallery3" value="<%= proj.gallery && proj.gallery[2] %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Gallery 4</label><input type="text" name="gallery4" value="<%= proj.gallery && proj.gallery[3] %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Client Quote</label><textarea name="clientQuote" rows="2" class="w-full border px-2 py-1 rounded outline-none text-sm"><%= proj.clientQuote %></textarea></div>
                             <button type="submit" class="w-full bg-blue-500 text-white text-xs font-bold py-2 rounded hover:bg-blue-600">Save Changes</button></form>
                     </div>
                 <% }) %>

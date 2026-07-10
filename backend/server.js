@@ -33,6 +33,16 @@ const projectSchema = new mongoose.Schema({
     category: { type: String, default: 'residential' },
     imageUrl: { type: String, default: '' },
     description: { type: String, default: '' },
+    location: { type: String, default: '' },
+    year: { type: String, default: '' },
+    area: { type: String, default: '' },
+    duration: { type: String, default: '' },
+    virtualTourUrl: { type: String, default: '' },
+    keyFeatures: { type: [String], default: [] },
+    materialsUsed: { type: [String], default: [] },
+    gallery: { type: [String], default: [] },
+    clientQuote: { type: String, default: '' },
+    bannerImageUrl: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now }
 });
 const Project = mongoose.model('Project', projectSchema);
@@ -163,7 +173,15 @@ app.get('/projects.html', async (req, res) => {
         res.render('projects', { content: contentCache || {}, projects });
     } catch(err) { res.status(500).send('Error loading page'); }
 });
-app.get('/project-detail.html', (req, res) => res.render('project-detail', { content: contentCache || {} }));
+app.get('/project-detail/:id', async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) return res.status(404).send('Project not found');
+        res.render('project-detail', { content: contentCache || {}, project });
+    } catch(err) {
+        res.status(500).send('Error loading project');
+    }
+});
 app.get('/design-ideas.html', (req, res) => res.render('design-ideas', { content: contentCache || {} }));
 app.get('/logo-upgrade.html', (req, res) => res.render('logo-upgrade', { content: contentCache || {} }));
 app.get('/reach-us.html', (req, res) => res.render('reach-us', { content: contentCache || {} }));
@@ -431,6 +449,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
