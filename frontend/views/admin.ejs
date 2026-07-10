@@ -145,7 +145,15 @@
                             <div><label class="block text-xs font-bold text-gray-700">Progress (%)</label><input type="number" name="progress" value="<%= proj.progress %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
                             <div><label class="block text-xs font-bold text-gray-700">Manager</label><input type="text" name="managerName" value="<%= proj.managerName %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
                             <div><label class="block text-xs font-bold text-gray-700">Image URL</label><input type="text" name="imageUrl" value="<%= proj.imageUrl %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
-                            <button type="submit" class="w-full bg-blue-500 text-white text-xs font-bold py-2 rounded hover:bg-blue-600">Save Changes</button>
+                                                        <div><label class="block text-xs font-bold text-gray-700">Category</label>
+                                <select name="category" class="w-full border px-2 py-1 rounded outline-none text-sm">
+                                    <option value="residential" <%= proj.category === 'residential' ? 'selected' : '' %>>Residential</option>
+                                    <option value="commercial" <%= proj.category === 'commercial' ? 'selected' : '' %>>Commercial</option>
+                                    <option value="interior" <%= proj.category === 'interior' ? 'selected' : '' %>>Interior</option>
+                                    <option value="renovation" <%= proj.category === 'renovation' ? 'selected' : '' %>>Renovation</option>
+                                </select>
+                            </div>
+                            <button type="submit"
                         </form>
                     </div>
                 <% }) %>
@@ -236,4 +244,5 @@
 
 </body>
 </html>
+
 
