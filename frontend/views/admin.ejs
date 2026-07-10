@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin CMS | Indraprastha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brandTeal: '#1F363C', brandGold: '#C79F39', darkBg: '#0a0a0a', darkSurface: '#171717' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-brandTeal text-white p-4 shadow-md flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="bg-brandGold text-brandTeal font-bold px-2 py-1 rounded">ADMIN</div>
+            <h1 class="text-xl font-bold tracking-widest uppercase">Indraprastha CMS</h1>
+        </div>
+        <a href="/api/logout" class="text-sm font-semibold hover:text-brandGold transition-colors">Logout</a>
+    </nav>
+
+    <div class="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left: User Management -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold mb-4 border-b pb-2">User Registrations</h2>
+                <p class="text-sm text-gray-500 mb-6">Approve or reject new users. Users cannot log in until approved.</p>
+
+                <div class="space-y-4">
+                    <% if (users.length === 0) { %>
+                        <p class="text-sm text-gray-500 italic">No users found.</p>
+                    <% } %>
+                    
+                    <% users.forEach(user => { %>
+                        <div class="border rounded-lg p-4 <%= user.status === 'Pending' ? 'bg-yellow-50 border-yellow-200' : (user.status === 'Approved' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200') %>">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <p class="font-bold text-sm"><%= user.email %></p>
+                                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full 
+                                        <%= user.status === 'Pending' ? 'bg-yellow-200 text-yellow-800' : (user.status === 'Approved' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800') %>">
+                                        <%= user.status %>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <% if (user.status === 'Pending') { %>
+                            <div class="flex gap-2 mt-3">
+                                <form action="/admin/approve/<%= user.id %>" method="POST" class="flex-1">
+                                    <button class="w-full text-xs font-bold bg-green-500 text-white py-1.5 rounded hover:bg-green-600 transition-colors">Approve</button>
+                                </form>
+                                <form action="/admin/reject/<%= user.id %>" method="POST" class="flex-1">
+                                    <button class="w-full text-xs font-bold bg-red-500 text-white py-1.5 rounded hover:bg-red-600 transition-colors">Reject</button>
+                                </form>
+                            </div>
+                            <% } %>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Content Management -->
+        <div class="lg:col-span-2">
+            <div class="bg-white rounded-xl shadow p-6">
+                <div class="flex justify-between items-center border-b pb-2 mb-4">
+                    <h2 class="text-xl font-bold">Content Management (CMS)</h2>
+                    <a href="/" target="_blank" class="text-xs font-bold text-brandTeal hover:underline">View Live Website &rarr;</a>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">Edit the text that appears on the live website.</p>
+
+                <form action="/admin/content/update" method="POST" class="space-y-6">
+                    <% contents.forEach(item => { %>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <label class="block text-xs font-bold text-brandTeal uppercase tracking-wider mb-2">Key: <%= item.key %></label>
+                            <% if (item.value.length > 50) { %>
+                                <textarea name="<%= item.key %>" rows="3" class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-brandGold outline-none"><%= item.value %></textarea>
+                            <% } else { %>
+                                <input type="text" name="<%= item.key %>" value="<%= item.value %>" class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-brandGold outline-none">
+                            <% } %>
+                        </div>
+                    <% }) %>
+
+                    <div class="flex justify-end pt-4">
+                        <button type="submit" class="bg-brandTeal text-white font-bold px-6 py-2 rounded-lg hover:bg-brandGold transition-colors shadow-lg">Save All Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

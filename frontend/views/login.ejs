@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login | Indraprastha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { brandTeal: '#1F363C', brandGold: '#C79F39', darkBg: '#0a0a0a', darkSurface: '#171717' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <div class="min-h-screen flex">
+        <!-- Left: Image -->
+        <div class="hidden lg:flex lg:w-1/2 relative items-center justify-center bg-brandTeal overflow-hidden">
+            <img src="asset/hero_building_1783441971426.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <div class="relative z-10 text-center p-12">
+                <img src="asset/image/logo/logo_transparent.png" alt="Logo" class="h-24 mx-auto mb-6">
+                <h2 class="text-4xl font-serif text-white mb-4">Indraprastha</h2>
+                <p class="text-gray-300 text-lg">Building modern spaces with precision, quality, and lasting value.</p>
+            </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
+            <div class="w-full max-w-md">
+                <a href="index.html" class="lg:hidden flex items-center justify-center mb-10">
+                    <img src="asset/image/logo/logo_transparent.png" alt="Logo" class="h-14">
+                </a>
+                <h1 class="text-3xl font-bold mb-2 dark:text-white">Welcome Back</h1>
+                <p class="text-gray-500 dark:text-gray-400 mb-8">Sign in to your Indraprastha account</p>
+
+                <!-- Error Messages from Backend -->
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-xl mb-6 text-sm">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <form class="space-y-5" action="/api/login" method="POST">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Email Address</label>
+                        <input type="email" name="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-darkSurface focus:ring-2 focus:ring-brandGold focus:border-transparent outline-none transition-all dark:text-white" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Password</label>
+                        <input type="password" name="password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-darkSurface focus:ring-2 focus:ring-brandGold focus:border-transparent outline-none transition-all dark:text-white" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center gap-2 text-sm">
+                            <input type="checkbox" class="rounded accent-brandGold">
+                            <span class="dark:text-gray-400">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-brandGold hover:underline">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-brandTeal dark:bg-brandGold text-white dark:text-brandTeal font-bold hover:opacity-90 transition-opacity">Sign In</button>
+                </form>
+
+                <p class="text-center text-sm mt-8 text-gray-500 dark:text-gray-400">Don't have an account? <a href="signup.html" class="text-brandGold font-semibold hover:underline">Sign Up</a></p>
+                <a href="index.html" class="block text-center text-sm mt-4 text-gray-400 hover:text-brandGold transition-colors">&larr; Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

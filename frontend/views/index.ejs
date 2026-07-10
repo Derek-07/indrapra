@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Indraprastha | Construction & Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandTeal: '#1F363C',
+                        brandGold: '#C79F39',
+                        darkBg: '#0a0a0a',
+                        darkSurface: '#171717',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300 pb-20 md:pb-0">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 bg-white/30 dark:bg-black/30 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/10 transition-colors duration-300">
+        <a href="index.html" class="flex-shrink-0">
+            <img src="asset/image/logo/logo_transparent.png" alt="Indraprastha Logo" class="h-10 md:h-14 object-contain transition-all bg-brandTeal/95 dark:bg-transparent rounded-xl px-3 py-1.5 shadow-lg dark:shadow-none dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+            <a href="index.html" class="text-sm font-semibold hover:text-brandGold transition-colors text-brandTeal dark:text-white">Home</a>
+            <a href="about.html" class="text-sm font-medium hover:text-brandGold transition-colors dark:text-gray-300">About Us</a>
+            <a href="projects.html" class="text-sm font-medium hover:text-brandGold transition-colors dark:text-gray-300">Projects</a>
+            <a href="design-ideas.html" class="text-sm font-medium hover:text-brandGold transition-colors dark:text-gray-300">Design Ideas</a>
+            <a href="logo-upgrade.html" class="text-sm font-medium hover:text-brandGold transition-colors dark:text-gray-300">Branding</a>
+            <a href="reach-us.html" class="text-sm font-medium hover:text-brandGold transition-colors dark:text-gray-300">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button id="theme-toggle" class="p-2 rounded-full bg-white/20 dark:bg-black/20 hover:bg-white/40 dark:hover:bg-black/40 transition-colors">
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 4.22a1 1 0 011.415 0l.708.708a1 1 0 01-1.414 1.414l-.708-.708a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM14.93 15.637a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 18a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zm-4.22-4.22a1 1 0 01-1.415 0l-.708-.708a1 1 0 011.414-1.414l.708.708a1 1 0 010 1.414zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm3.07-5.637a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 5a5 5 0 100 10 5 5 0 000-10z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            </button>
+            <a href="login.html" class="hidden md:inline-block px-5 py-2 rounded-full border border-gray-900 dark:border-white text-sm font-semibold hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">Login</a>
+        </div>
+    </nav>
+
+    <!-- ============================== -->
+    <!-- HERO SECTION (Fixed Layout)    -->
+    <!-- ============================== -->
+    <header class="relative min-h-screen flex items-center bg-brandTeal overflow-hidden">
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0 bg-brandTeal">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 md:opacity-60" poster="asset/hero_building_1783441971426.jpg">
+                <source src="https://videos.pexels.com/video-files/3209211/3209211-hd_1920_1080_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-r from-brandTeal via-brandTeal/90 to-brandTeal/30"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 mt-20">
+            <!-- Text content - full width, no overlap -->
+            <div class="max-w-3xl animate-on-scroll opacity-0 translate-y-10">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white uppercase tracking-wider leading-none mb-6">Indraprastha</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-10">Delivering high-quality construction with attention to detail, reliability, and thoughtful execution.</p>
+            </div>
+            
+            <!-- Cards below the text, not beside it -->
+            <div class="flex flex-col sm:flex-row gap-6 mt-4">
+                <a href="project-detail.html?id=azure" class="block w-full sm:w-64 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-2 transition-transform duration-300 group animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 200ms;">
+                    <img src="asset/card_residential_1783441988273.jpg" class="w-full h-36 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-end">
+                        <span class="text-white font-semibold text-sm">Residential<br>Construction</span>
+                        <span class="text-brandGold text-xs font-bold">EXPLORE &rarr;</span>
+                    </div>
+                </a>
+                
+                <a href="project-detail.html?id=marble" class="block w-full sm:w-64 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:-translate-y-2 transition-transform duration-300 group animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 400ms;">
+                    <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-36 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-end">
+                        <span class="text-white font-semibold text-sm">Commercial<br>Construction</span>
+                        <span class="text-brandGold text-xs font-bold">EXPLORE &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================== -->
+    <!-- STATS SECTION                  -->
+    <!-- ============================== -->
+    <section class="border-y border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-darkSurface/50 backdrop-blur-lg">
+        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-200 dark:divide-gray-800">
+            <div class="p-8 text-center animate-on-scroll opacity-0">
+                <div class="text-3xl md:text-4xl font-extrabold text-brandTeal dark:text-brandGold mb-2">10 Yrs+</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">Consistent, high-quality work</div>
+            </div>
+            <div class="p-8 text-center animate-on-scroll opacity-0" style="transition-delay: 100ms;">
+                <div class="text-3xl md:text-4xl font-extrabold text-brandTeal dark:text-brandGold mb-2">100%</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">Fully certified & compliant</div>
+            </div>
+            <div class="p-8 text-center animate-on-scroll opacity-0" style="transition-delay: 200ms;">
+                <div class="text-3xl md:text-4xl font-extrabold text-brandTeal dark:text-brandGold mb-2">24/7</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">Safety prioritized</div>
+            </div>
+            <div class="p-8 text-center animate-on-scroll opacity-0" style="transition-delay: 300ms;">
+                <div class="text-3xl md:text-4xl font-extrabold text-brandTeal dark:text-brandGold mb-2">5/5</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">Client satisfaction rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- OUR SERVICES (Matching Screenshot) -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-darkBg transition-colors">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 animate-on-scroll opacity-0 translate-y-10">
+                <span class="text-sm font-bold uppercase tracking-widest text-brandGold mb-2 block">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-bold dark:text-white mb-4">Residential & Commercial Projects<br>Delivered with Excellence</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-xl">With a focus on detail and reliability, we deliver residential and commercial projects built for lasting value.</p>
+            </div>
+
+            <!-- Residential Block -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20 items-start animate-on-scroll opacity-0 translate-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 dark:text-white">Residential Construction</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Custom Homes</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Multi-Family Housing</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Apartment Complexes</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Renovations & Remodeling</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Luxury Villas</span></li>
+                    </ul>
+                    <a href="reach-us.html" class="inline-block px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold hover:opacity-80 transition-opacity">Contact Us</a>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <img src="asset/card_residential_1783441988273.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_house1.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_interior1.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_livingroom_1783442814598.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/idea_bedroom_1783442834138.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_kitchen_1783442824055.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+
+            <!-- Commercial Block -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start animate-on-scroll opacity-0 translate-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 dark:text-white">Commercial Construction</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Office Buildings</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Retail Spaces</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Hospitality (Hotels & Restaurants)</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Healthcare Facilities</span></li>
+                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandTeal dark:text-brandGold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="dark:text-gray-300">Educational Buildings</span></li>
+                    </ul>
+                    <a href="reach-us.html" class="inline-block px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold hover:opacity-80 transition-opacity">Contact Us</a>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_office1.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_commercial1.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/hero_building_1783441971426.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/standards_metal_1783442014700.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                    <img src="asset/project_office1.jpg" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- OUR PROJECTS (Matching Screenshot) -->
+    <!-- ============================== -->
+    <section class="py-24 bg-darkBg text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                <!-- Left: Title + Filters -->
+                <div class="animate-on-scroll opacity-0 -translate-x-10">
+                    <span class="text-sm font-bold uppercase tracking-widest text-brandGold mb-2 block">About Us</span>
+                    <h2 class="text-4xl font-bold mb-10">Our Projects</h2>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="text-white font-semibold cursor-pointer hover:text-brandGold transition-colors">Office Buildings</li>
+                        <li class="cursor-pointer hover:text-brandGold transition-colors">Corporate Headquarters</li>
+                        <li class="cursor-pointer hover:text-brandGold transition-colors">Shopping Centers</li>
+                        <li class="cursor-pointer hover:text-brandGold transition-colors">Hospitality (Hotels & Restaurants)</li>
+                        <li class="cursor-pointer hover:text-brandGold transition-colors">Healthcare Facilities</li>
+                        <li class="cursor-pointer hover:text-brandGold transition-colors">Industrial & Warehouses</li>
+                    </ul>
+                </div>
+                
+                <!-- Right: 3x2 Project Grid -->
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll opacity-0 translate-y-10">
+                    <a href="project-detail.html?id=azure" class="group">
+                        <img src="asset/project_office1.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Skyline Corporate HQ</h4>
+                        <p class="text-gray-400 text-sm">A modern office tower with open layouts and abundant natural light.</p>
+                    </a>
+                    <a href="project-detail.html?id=marble" class="group">
+                        <img src="asset/project_commercial1.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Vertex Business Center</h4>
+                        <p class="text-gray-400 text-sm">Designed to support collaboration with flexible and efficient workspaces.</p>
+                    </a>
+                    <a href="project-detail.html?id=azure" class="group">
+                        <img src="asset/hero_building_1783441971426.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Apex Office Headquarters</h4>
+                        <p class="text-gray-400 text-sm">Sleek architecture paired with high-performance work environments.</p>
+                    </a>
+                    <a href="project-detail.html?id=marble" class="group">
+                        <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Horizon Corporate Tower</h4>
+                        <p class="text-gray-400 text-sm">A contemporary office focused on functionality, comfort, and sustainability.</p>
+                    </a>
+                    <a href="project-detail.html?id=azure" class="group">
+                        <img src="asset/standards_metal_1783442014700.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Meridian Business Hub</h4>
+                        <p class="text-gray-400 text-sm">Smartly planned headquarters with refined interiors and efficient layouts.</p>
+                    </a>
+                    <a href="project-detail.html?id=marble" class="group">
+                        <img src="asset/project_office1.jpg" class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                        <h4 class="font-bold mb-1">Nexus Corporate Offices</h4>
+                        <p class="text-gray-400 text-sm">Built to enhance productivity with modern design and seamless connectivity.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- HOW WE WORK (Staggered Timeline) -->
+    <!-- ============================== -->
+    <section class="py-24 bg-darkBg text-white border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 animate-on-scroll opacity-0 translate-y-10">
+                <span class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-2 block">How We Work</span>
+                <h2 class="text-4xl md:text-5xl font-bold">Building With Structure,<br>Delivering With Confidence</h2>
+                <p class="text-gray-400 mt-4 max-w-xl">Every step of our process is designed to ensure efficiency, quality, and a smooth experience from concept to completion.</p>
+            </div>
+            
+            <!-- Desktop Timeline (Staggered) -->
+            <div class="hidden md:block relative h-[450px] w-full mt-24">
+                <div class="absolute top-1/2 left-0 w-[95%] border-t border-gray-700"></div>
+
+                <div class="absolute top-1/2 left-0 w-1/4 pr-8 animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 100ms;">
+                    <div class="absolute -top-[6px] left-0 w-3 h-3 bg-white rounded-full z-10"></div>
+                    <div class="absolute top-0 left-[5px] w-px h-20 bg-gray-700"></div>
+                    <div class="pt-24">
+                        <h3 class="text-lg font-bold mb-3">01 | Consultation & Project Planning</h3>
+                        <p class="text-gray-400 text-sm">We begin by understanding your vision, requirements, and budget to create a clear roadmap for your project.</p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-1/2 left-[25%] w-1/4 pr-8 animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 200ms;">
+                    <div class="absolute -bottom-[6px] left-0 w-3 h-3 bg-white rounded-full z-10"></div>
+                    <div class="absolute bottom-0 left-[5px] w-px h-20 bg-gray-700"></div>
+                    <div class="pb-24">
+                        <h3 class="text-lg font-bold mb-3">02 | Design & Approvals</h3>
+                        <p class="text-gray-400 text-sm">Our team develops detailed designs and handles necessary approvals, ensuring everything aligns with regulations.</p>
+                    </div>
+                </div>
+
+                <div class="absolute top-1/2 left-[50%] w-1/4 pr-8 animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 300ms;">
+                    <div class="absolute -top-[6px] left-0 w-3 h-3 bg-white rounded-full z-10"></div>
+                    <div class="absolute top-0 left-[5px] w-px h-20 bg-gray-700"></div>
+                    <div class="pt-24">
+                        <h3 class="text-lg font-bold mb-3">03 | Construction & Execution</h3>
+                        <p class="text-gray-400 text-sm">With careful planning in place, we execute the project with skilled craftsmanship, regular updates, and strict quality control.</p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-1/2 left-[75%] w-1/4 pr-8 animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 400ms;">
+                    <div class="absolute -bottom-[6px] left-0 w-3 h-3 bg-white rounded-full z-10"></div>
+                    <div class="absolute bottom-0 left-[5px] w-px h-20 bg-gray-700"></div>
+                    <div class="pb-24">
+                        <h3 class="text-lg font-bold mb-3">04 | Final Delivery & Handover</h3>
+                        <p class="text-gray-400 text-sm">Following completion, we carefully review every detail through final inspections before handing it over.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Timeline -->
+            <div class="md:hidden mt-10 relative pt-4 pb-8 pl-6 border-l border-gray-700 flex flex-col gap-12">
+                <div class="relative animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 100ms;">
+                    <div class="absolute top-2 -left-[31px] w-3 h-3 bg-white rounded-full z-10"></div>
+                    <h3 class="text-lg font-bold mb-3">01 | Consultation & Planning</h3>
+                    <p class="text-gray-400 text-sm">We begin by understanding your vision, requirements, and budget.</p>
+                </div>
+                <div class="relative animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 200ms;">
+                    <div class="absolute top-2 -left-[31px] w-3 h-3 bg-white rounded-full z-10"></div>
+                    <h3 class="text-lg font-bold mb-3">02 | Design & Approvals</h3>
+                    <p class="text-gray-400 text-sm">Our team develops detailed designs and handles approvals effortlessly.</p>
+                </div>
+                <div class="relative animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 300ms;">
+                    <div class="absolute top-2 -left-[31px] w-3 h-3 bg-white rounded-full z-10"></div>
+                    <h3 class="text-lg font-bold mb-3">03 | Construction & Execution</h3>
+                    <p class="text-gray-400 text-sm">We execute the project with skilled craftsmanship and quality control.</p>
+                </div>
+                <div class="relative animate-on-scroll opacity-0 translate-y-5" style="transition-delay: 400ms;">
+                    <div class="absolute top-2 -left-[31px] w-3 h-3 bg-white rounded-full z-10"></div>
+                    <h3 class="text-lg font-bold mb-3">04 | Final Handover</h3>
+                    <p class="text-gray-400 text-sm">We carefully review every detail through final inspections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- WHY CHOOSE US (Light bg match) -->
+    <!-- ============================== -->
+    <section class="py-24 bg-gray-50 dark:bg-darkSurface transition-colors">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-on-scroll opacity-0 -translate-x-10">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 dark:text-white">Why Choose Indraprastha For Your Next Project</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">We combine experience, precision, and a client-first approach to deliver projects that meet the highest standards.</p>
+                <img src="asset/workers_team.jpg" class="w-full rounded-2xl shadow-xl">
+            </div>
+            
+            <div class="flex flex-col gap-8 animate-on-scroll opacity-0 translate-x-10">
+                <div class="flex items-start gap-4 border-b border-gray-200 dark:border-gray-700 pb-6">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-brandTeal dark:text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Expertise You Can Trust</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Years of proven experience delivering reliable, high-quality construction solutions.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 border-b border-gray-200 dark:border-gray-700 pb-6">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-brandTeal dark:text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Transparent Process</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Clear communication and honest updates at every stage of your project.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 border-b border-gray-200 dark:border-gray-700 pb-6">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-brandTeal dark:text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">On-Time & On-Budget Delivery</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Projects completed efficiently without delays or unexpected costs.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-brandTeal dark:text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Client-Focused Approach</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Your needs and vision guide every decision we make.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- TESTIMONIALS                    -->
+    <!-- ============================== -->
+    <section class="relative py-32 overflow-hidden bg-brandTeal">
+        <img src="asset/hero_building_1783441971426.jpg" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40">
+        
+        <div class="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <h2 class="text-5xl md:text-6xl font-bold text-white max-w-sm leading-tight animate-on-scroll opacity-0 -translate-x-10">Client<br>Testimonials</h2>
+            
+            <div class="w-full max-w-2xl p-8 md:p-12 rounded-3xl bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl animate-on-scroll opacity-0 translate-y-10">
+                <p id="testimonial-text" class="text-xl md:text-2xl text-white font-serif italic mb-8 transition-opacity duration-300">"Indraprastha Construction handled our project with professionalism and precision. Everything was well-organized, transparent, and completed to a very high standard."</p>
+                
+                <div class="flex items-center justify-between">
+                    <span id="testimonial-author" class="text-brandGold font-semibold tracking-wide transition-opacity duration-300">— Sarah Collins, Business Owner</span>
+                    <div class="flex gap-3">
+                        <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&larr;</button>
+                        <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- BANNER                          -->
+    <!-- ============================== -->
+    <section class="relative py-40 text-center bg-black overflow-hidden">
+        <img src="asset/hero_building_1783441971426.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        <h2 class="relative z-10 text-5xl md:text-7xl font-bold text-white max-w-4xl mx-auto px-6 animate-on-scroll opacity-0 scale-95">Built On Trust. Driven By Excellence.</h2>
+    </section>
+
+    <!-- ============================== -->
+    <!-- FOOTER                          -->
+    <!-- ============================== -->
+    <!-- BLOG / INSIGHTS PREVIEW        -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-darkBg transition-colors">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="text-sm font-bold uppercase tracking-widest text-brandGold mb-2 block">Latest News</span>
+                    <h2 class="text-4xl font-bold dark:text-white">Insights & Trends</h2>
+                </div>
+                <a href="blog.html" class="hidden md:inline-flex items-center gap-2 text-brandTeal dark:text-brandGold font-bold hover:underline">
+                    View All Articles <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog Card 1 -->
+                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
+                            <span class="text-brandGold">Architecture</span> &bull; <span>Oct 12, 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">The Rise of Sustainable Commercial Spaces</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">How modern businesses are prioritizing eco-friendly materials and energy-efficient designs in their new headquarters.</p>
+                    </div>
+                </a>
+                
+                <!-- Blog Card 2 -->
+                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="asset/idea_bedroom_1783442834138.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
+                            <span class="text-brandGold">Interior</span> &bull; <span>Sep 28, 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">Maximizing Natural Light in Residential Villas</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Strategic placement of floor-to-ceiling windows to enhance mood and reduce electricity consumption.</p>
+                    </div>
+                </a>
+
+                <!-- Blog Card 3 -->
+                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="asset/project_kitchen_1783442824055.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
+                            <span class="text-brandGold">Design</span> &bull; <span>Sep 15, 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">Dark Charcoal vs. White Marble</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Exploring the striking visual contrast that is dominating luxury kitchen designs this year.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="blog.html" class="inline-flex items-center gap-2 text-brandTeal dark:text-brandGold font-bold">
+                    View All Articles <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <footer class="bg-darkBg text-gray-400 py-20 border-t border-gray-800">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-16">
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-white font-bold mb-6 tracking-widest">CONTACT US</h4>
+                <p class="mb-2">1428 West Elm Street, Suite 204</p>
+                <p class="mb-2">Los Angeles, CA 90026</p>
+                <p class="mb-2">Phone: (323) 555-7821</p>
+                <p>Email: hello@indraprasthaconstruction.com</p>
+            </div>
+            
+            <div class="flex flex-col items-center justify-center">
+                <img src="asset/image/logo/logo_transparent.png" alt="Indraprastha Logo" class="h-20 object-contain mb-4">
+                <h3 class="text-white text-xl font-bold tracking-widest mb-4">INDRAPRASTHA</h3>
+                <p class="text-sm text-center max-w-xs">Building modern spaces with precision, quality, and lasting value.</p>
+                <div class="flex gap-5 mt-6">
+                    <a href="#" class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-brandGold hover:border-brandGold transition-colors" aria-label="Facebook">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-brandGold hover:border-brandGold transition-colors" aria-label="Twitter">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-brandGold hover:border-brandGold transition-colors" aria-label="Instagram">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end">
+                <h4 class="text-white font-bold mb-6 tracking-widest">OFFICE HOURS</h4>
+                <p class="mb-1 text-white">MON-FRI</p>
+                <p class="mb-4">8:30 AM - 6:00 PM</p>
+                <p class="mb-1 text-white">SAT-SUN</p>
+                <p>Closed</p>
+            </div>
+        </div>
+        <div class="text-center text-sm border-t border-gray-800 pt-8">
+            &copy; 2026 Indraprastha Construction. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/70 dark:bg-black/70 backdrop-blur-2xl border-t border-gray-200/50 dark:border-white/10 z-50 flex justify-around items-center pb-safe pt-2 px-2 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] transition-colors duration-300">
+        <a href="index.html" class="flex flex-col items-center p-2 text-brandTeal dark:text-brandGold transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="projects.html" class="flex flex-col items-center p-2 text-gray-500 dark:text-gray-400 hover:text-brandTeal dark:hover:text-white transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+            <span class="text-[10px] font-medium">Projects</span>
+        </a>
+        <a href="logo-upgrade.html" class="flex flex-col items-center p-2 text-gray-500 dark:text-gray-400 hover:text-brandTeal dark:hover:text-white transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11z"/><circle cx="17.5" cy="17.5" r="4.5"/><path d="M3 13.5h8v8H3z"/></svg>
+            <span class="text-[10px] font-medium">Branding</span>
+        </a>
+        <a href="login.html" class="flex flex-col items-center p-2 text-gray-500 dark:text-gray-400 hover:text-brandTeal dark:hover:text-white transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span class="text-[10px] font-medium">Login</span>
+        </a>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

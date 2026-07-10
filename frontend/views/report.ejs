@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Comparison Report | Indraprastha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brandTeal: '#1F363C', brandGold: '#C79F39' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f3f4f6; color: #111827; }
+        .page {
+            max-width: 21cm; /* A4 width */
+            margin: 2cm auto;
+            background: white;
+            padding: 2cm;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        @media print {
+            body { background: white; }
+            .page { margin: 0; padding: 0; box-shadow: none; max-width: 100%; border-radius: 0; }
+            .no-print { display: none; }
+        }
+        h2 { border-bottom: 2px solid #f3f4f6; padding-bottom: 0.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #1F363C; }
+        ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; color: #374151; }
+        strong { color: #111827; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Print Button (Hidden during print) -->
+    <div class="no-print text-center pt-8">
+        <button onclick="window.print()" class="bg-brandTeal text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-opacity-90 transition-all flex items-center gap-2 mx-auto">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Save as PDF
+        </button>
+        <p class="text-sm text-gray-500 mt-2">Click the button above or press Ctrl+P / Cmd+P to save this report as a PDF.</p>
+    </div>
+
+    <div class="page">
+        <!-- Header -->
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-serif font-bold text-brandTeal mb-2 uppercase tracking-widest">Indraprastha</h1>
+            <p class="text-brandGold font-bold tracking-widest uppercase text-sm">Website Modernization & Feature Report</p>
+        </header>
+
+        <div class="grid grid-cols-2 gap-8 mb-10 bg-gray-50 p-6 rounded-lg border border-gray-100">
+            <div>
+                <p class="text-xs text-gray-500 font-bold uppercase mb-1">Current Live Website</p>
+                <p class="font-medium text-red-600">indraprasthadesignstudio.com</p>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 font-bold uppercase mb-1">Newly Built Platform</p>
+                <p class="font-medium text-green-600">Premium Upgrade (Local Prototype)</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-2xl font-bold">Executive Summary</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                The goal of this digital upgrade was to transform the existing Indraprastha digital presence from a standard informational site into a highly interactive, luxurious, and conversion-optimized web platform. The new website focuses heavily on premium user experience (UX), modern UI aesthetics, dynamic functionality, and active client engagement tools.
+            </p>
+
+            <h2 class="text-2xl font-bold">1. What's Missing in the Current Website</h2>
+            <p class="text-gray-700 mb-4">Based on modern web standards, the current live website lacks several critical elements that are now standard in the luxury real estate and construction industry:</p>
+            <ul>
+                <li><strong>Static and Flat Design:</strong> The current site feels like a traditional brochure. It lacks visual depth, modern shadows, and engaging micro-interactions.</li>
+                <li><strong>No Client Portal:</strong> There is no dedicated space for active clients to track their ongoing projects, viewing progress, or managing payments.</li>
+                <li><strong>No Instant Estimates:</strong> Users cannot quickly gauge how much their project might cost without calling and waiting for a quote, which often leads to dropped leads.</li>
+                <li><strong>Lack of Modern Interactivity:</strong> No smooth scroll animations, no custom cursors, and no interactive media (like 360 virtual tours or video backgrounds) to hook the user immediately.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold mt-8">2. The New Website: Key Advantages & Features</h2>
+            <p class="text-gray-700 mb-4">The new website completely overhauls the digital experience. Here is why the new platform is vastly superior:</p>
+
+            <h3 class="text-xl font-bold text-brandTeal mt-6 mb-2">A. Next-Generation Design Aesthetics</h3>
+            <ul>
+                <li><strong>Glassmorphism UI:</strong> We implemented a cutting-edge frosted-glass aesthetic (semi-transparent backgrounds with background blur). This makes the UI feel light, modern, and highly premium.</li>
+                <li><strong>Dark Mode & Light Mode:</strong> The entire website features a seamless, automatic Dark/Light mode toggle. This ensures the website looks stunning regardless of the user's device preferences.</li>
+                <li><strong>Fluid Responsiveness:</strong> Every single component has been meticulously crafted using a "mobile-first" approach. The navigation bar transforms into an app-like bottom navigation dock on smartphones.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-brandTeal mt-6 mb-2">B. High-End Animations & Interactivity</h3>
+            <ul>
+                <li><strong>Cinematic Video Backgrounds:</strong> The homepage now greets users with an immersive, autoplaying HTML5 video background, instantly communicating scale and quality.</li>
+                <li><strong>Custom Golden Cursor:</strong> A unique, interactive cursor follows the user's mouse and expands dynamically when hovering over clickable elements.</li>
+                <li><strong>Parallax & Scroll Effects:</strong> Elements smoothly fade and slide into view as the user scrolls, creating a storytelling effect rather than a static read.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-brandTeal mt-6 mb-2">C. Advanced Business Tools & Functionality</h3>
+            <ul>
+                <li><strong>Dynamic Cost Estimator:</strong> A brand-new tool on the Contact page allows potential clients to input their property type and square footage to instantly receive a rough budget estimate. <em>Pro: Generates highly qualified leads.</em></li>
+                <li><strong>Interactive Client Dashboard:</strong> We introduced a secure portal area featuring a visual progress timeline, recent site photos, payment tracking, and downloadable documents.</li>
+                <li><strong>360&deg; Virtual Tour Module:</strong> Project detail pages now include a designated section for interactive panoramic tours, allowing users to "drag to explore" a space virtually.</li>
+                <li><strong>AI Assistant (Optional Add-on):</strong> A built-in Artificial Intelligence chatbot capable of answering basic client queries, scheduling consultations, and providing 24/7 customer support. <em>Note: This is an advanced premium feature available at an additional cost.</em></li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-brandTeal mt-6 mb-2">D. Security & Accessibility</h3>
+            <ul>
+                <li><strong>Content Protection:</strong> We implemented script-level security to prevent casual content theft. Right-clicking (context menus), text selection, and developer keyboard shortcuts have been disabled.</li>
+                <li><strong>Floating WhatsApp Integration:</strong> A persistent WhatsApp chat button ensures that sales representatives are always just one tap away for any visitor.</li>
+                <li><strong>Dedicated Insights (Blog):</strong> A new architecture and construction blog section has been added to improve SEO (Search Engine Optimization) and establish industry authority.</li>
+            </ul>
+
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-500 text-sm">Generated for Indraprastha Design Studio &bull; Premium Website Upgrade</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
