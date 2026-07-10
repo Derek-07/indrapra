@@ -142,7 +142,7 @@ app.post('/api/signup', async (req, res) => {
     try {
         const { email, password } = req.body;
         await User.create({ email, password });
-        res.render('signup', { error: null, success: 'Account created! Waiting for Admin approval.' });
+        res.render('signup', { error: null, success: 'Account created! Please login now.' });
     } catch (err) {
         res.render('signup', { error: 'Email already exists or invalid.', success: null });
     }
@@ -234,6 +234,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
