@@ -127,6 +127,7 @@ app.use((req, res, next) => {
 
 // Public Pages
 app.get('/', (req, res) => res.render('index'));
+app.get('/index.html', (req, res) => res.redirect('/'));
 app.get('/about.html', (req, res) => res.render('about'));
 app.get('/projects.html', (req, res) => res.render('projects'));
 app.get('/project-detail.html', (req, res) => res.render('project-detail'));
@@ -278,6 +279,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
