@@ -155,7 +155,7 @@ app.post('/api/login', async (req, res) => {
         
         res.redirect('/dashboard.html');
     } catch (err) {
-        res.render('login', { error: 'An error occurred. Please try again.' });
+        res.render('login', { error: 'Error: ' + err.message });
     }
 });
 
@@ -219,4 +219,5 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
