@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session');
@@ -56,6 +56,7 @@ async function loadContentCache(callback) {
     }
 }
 
+let dbError = null;
 let isConnected = false;
 async function connectDB() {
     if (isConnected) return;
@@ -64,6 +65,7 @@ async function connectDB() {
             serverSelectionTimeoutMS: 5000
         });
         isConnected = true;
+        dbError = null;
         console.log('Connected to MongoDB Atlas (Serverless)');
         
         // Seed initial content
@@ -89,12 +91,16 @@ async function connectDB() {
         
         loadContentCache();
     } catch (err) {
+        dbError = err.message;
         console.error('MongoDB connection error:', err);
     }
 }
 
 app.use(async (req, res, next) => {
     await connectDB();
+    if (dbError && req.path === '/api/login') {
+        return res.render('login', { error: 'DB Connection Error: ' + dbError });
+    }
     next();
 });
 
@@ -228,6 +234,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
