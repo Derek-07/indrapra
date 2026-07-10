@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --primary-light: #FFFFFF;
   --primary-dark: #111111;
   --text-dark: #1A1A1A;
@@ -437,7 +437,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-checklist li::before {
-  content: '✓';
+  content: 'âœ“';
   color: var(--text-dark);
   font-weight: bold;
 }
@@ -942,7 +942,7 @@ body { user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz
 
 /* --- Premium Features CSS --- */
 /* Custom Cursor */
-* { cursor: none; }
+
 .custom-cursor {
     position: fixed;
     top: 0;
@@ -995,4 +995,5 @@ body { user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
