@@ -369,23 +369,7 @@ app.post('/admin/projects/delete/:id', async (req, res) => {
         res.status(500).send('Error deleting project');
     }
 });
-app.get('/api/seed-projects', async (req, res) => {
-    try {
-        const count = await Project.countDocuments();
-        if (count === 0) {
-            await Project.create([
-                { title: 'The Skyline Elite', clientName: 'Mr. Rakesh Sharma', status: 'Completed', progress: 100, managerName: 'Amit Jain', imageUrl: 'asset/image/commercial/card_commercial.jpg' },
-                { title: 'Oasis Green Villas', clientName: 'Sharma Group', status: 'Construction', progress: 60, managerName: 'Rahul Verma', imageUrl: 'asset/image/residential/idea_bathroom.jpg' },
-                { title: 'Apex IT Park', clientName: 'Apex Industries', status: 'Planning', progress: 15, managerName: 'Sanjay Gupta', imageUrl: 'asset/image/commercial/idea_bedroom.jpg' }
-            ]);
-            res.send('Seeded 3 projects successfully!');
-        } else {
-            res.send('Projects already exist. Skipping seed.');
-        }
-    } catch(err) {
-        res.status(500).send(err.message);
-    }
-});
+
 // Export the app for Vercel
 module.exports = app;
 
@@ -395,6 +379,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
