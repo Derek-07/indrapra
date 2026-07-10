@@ -218,8 +218,8 @@
                         </div>
                         
                         <form id="edit-test-<%= testi.id %>" action="/admin/testimonials/edit/<%= testi.id %>" method="POST" class="hidden mt-4 pt-4 border-t border-gray-200 space-y-3">
-                            <div><label class="block text-xs font-bold text-gray-700">Client Name</label><input type="text" name="clientName" value="<%= testi.authorName %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
-                            <div><label class="block text-xs font-bold text-gray-700">Project / Role</label><input type="text" name="projectName" value="<%= testi.role %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Client Name</label><input type="text" name="authorName" value="<%= testi.authorName %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
+                            <div><label class="block text-xs font-bold text-gray-700">Project / Role</label><input type="text" name="role" value="<%= testi.role %>" class="w-full border px-2 py-1 rounded outline-none text-sm"></div>
                             <div><label class="block text-xs font-bold text-gray-700">Quote</label><textarea name="quote" rows="3" class="w-full border px-2 py-1 rounded outline-none text-sm"><%= testi.quote %></textarea></div>
                             <button type="submit" class="w-full bg-blue-500 text-white text-xs font-bold py-2 rounded hover:bg-blue-600">Save Changes</button>
                         </form>
@@ -264,6 +264,7 @@
 
 </body>
 </html>
+
 
 
 

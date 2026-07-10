@@ -286,7 +286,7 @@ app.post('/admin/projects/new', async (req, res) => {
     try {
         await Project.create({
             title: req.body.title,
-            clientName: req.body.clientName,
+            authorName: req.body.authorName,
             status: req.body.status,
             progress: req.body.progress || 0,
             managerName: req.body.managerName || 'Admin'
@@ -366,7 +366,7 @@ app.post('/admin/projects/edit/:id', async (req, res) => {
     try {
         await Project.findByIdAndUpdate(req.params.id, {
             title: req.body.title,
-            clientName: req.body.clientName,
+            authorName: req.body.authorName,
             status: req.body.status,
             progress: req.body.progress,
             managerName: req.body.managerName,
@@ -410,8 +410,8 @@ app.post('/admin/testimonials/edit/:id', async (req, res) => {
     if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
     try {
         await Testimonial.findByIdAndUpdate(req.params.id, {
-            clientName: req.body.clientName,
-            projectName: req.body.projectName,
+            authorName: req.body.authorName,
+            role: req.body.role,
             quote: req.body.quote
         });
         res.redirect('/admin');
@@ -421,6 +421,23 @@ app.post('/admin/testimonials/edit/:id', async (req, res) => {
 });
 
 
+app.get('/api/seed-testimonials', async (req, res) => {
+    try {
+        const testCount = await Testimonial.countDocuments();
+        if (testCount === 0) {
+            await Testimonial.create([
+                { authorName: 'Amit Sharma', role: 'Oasis Green Villas', quote: 'Indraprastha delivered our dream home exactly on schedule. The attention to detail in the interior finishes is simply outstanding.' },
+                { authorName: 'Priya Desai', role: 'The Skyline Elite', quote: 'Their commercial spaces are built for the future. The smart building integration has improved our operational efficiency by 30%.' },
+                { authorName: 'Rahul Verma', role: 'Apex IT Park', quote: 'Professional, transparent, and highly skilled. They managed the entire construction process seamlessly without any cost overruns.' }
+            ]);
+            res.send('Seeded testimonials successfully!');
+        } else {
+            res.send('Testimonials already exist.');
+        }
+    } catch(err) {
+        res.status(500).send(err.message);
+    }
+});
 // Export the app for Vercel
 module.exports = app;
 
@@ -430,6 +447,7 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
 
