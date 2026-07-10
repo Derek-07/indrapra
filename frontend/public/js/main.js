@@ -358,3 +358,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// --- Secret Admin Access (Triple Click Footer) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const allDivs = document.querySelectorAll('div');
+    allDivs.forEach(div => {
+        if (div.innerText && div.innerText.includes('2026 Indraprastha Construction')) {
+            let clickCount = 0;
+            let clickTimer;
+            div.addEventListener('click', () => {
+                clickCount++;
+                if (clickCount === 3) {
+                    window.location.href = '/admin';
+                }
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 1000); // Reset count after 1 second
+            });
+        }
+    });
+});
