@@ -374,15 +374,52 @@
             <h2 class="text-5xl md:text-6xl font-bold text-white max-w-sm leading-tight animate-on-scroll opacity-0 -translate-x-10">Client<br>Testimonials</h2>
             
             <div class="w-full max-w-2xl p-8 md:p-12 rounded-3xl bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl animate-on-scroll opacity-0 translate-y-10">
-                <p id="testimonial-text" class="text-xl md:text-2xl text-white font-serif italic mb-8 transition-opacity duration-300">"Indraprastha Construction handled our project with professionalism and precision. Everything was well-organized, transparent, and completed to a very high standard."</p>
+                                <div class="testimonial-slider relative">
+                    <% if (testimonials && testimonials.length > 0) { %>
+                        <% testimonials.forEach((t, index) => { %>
+                            <div class="testimonial-item <%= index === 0 ? 'block' : 'hidden' %>" data-index="<%= index %>">
+                                <p class="text-xl md:text-2xl text-white font-serif italic mb-8">"<%= t.quote %>"</p>
+                                <span class="text-brandGold font-semibold tracking-wide">&mdash; <%= t.authorName %>, <%= t.role %></span>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="testimonial-item block">
+                            <p class="text-xl md:text-2xl text-white font-serif italic mb-8">"Indraprastha Construction handled our project with professionalism and precision."</p>
+                            <span class="text-brandGold font-semibold tracking-wide">&mdash; Sarah Collins, Business Owner</span>
+                        </div>
+                    <% } %>
+                </div>
                 
-                <div class="flex items-center justify-between">
-                    <span id="testimonial-author" class="text-brandGold font-semibold tracking-wide transition-opacity duration-300">â€” Sarah Collins, Business Owner</span>
+                <div class="flex items-center justify-between mt-8">
+                    <div></div>
                     <div class="flex gap-3">
-                        <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&larr;</button>
-                        <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&rarr;</button>
+                        <button onclick="prevT()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&larr;</button>
+                        <button onclick="nextT()" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 text-white flex items-center justify-center transition-colors">&rarr;</button>
                     </div>
                 </div>
+
+                <script>
+                    let tIndex = 0;
+                    const tItems = document.querySelectorAll('.testimonial-item');
+                    function showT(index) {
+                        tItems.forEach(i => i.classList.add('hidden'));
+                        tItems.forEach(i => i.classList.remove('block'));
+                        if(tItems.length > 0) {
+                            tItems[index].classList.remove('hidden');
+                            tItems[index].classList.add('block');
+                        }
+                    }
+                    function nextT() {
+                        if(tItems.length === 0) return;
+                        tIndex = (tIndex + 1) % tItems.length;
+                        showT(tIndex);
+                    }
+                    function prevT() {
+                        if(tItems.length === 0) return;
+                        tIndex = (tIndex - 1 + tItems.length) % tItems.length;
+                        showT(tIndex);
+                    }
+                </script>
             </div>
         </div>
     </section>
@@ -412,48 +449,24 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Blog Card 1 -->
-                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden">
-                        <img src="asset/card_commercial_1783442002069.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                            <span class="text-brandGold">Architecture</span> &bull; <span>Oct 12, 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">The Rise of Sustainable Commercial Spaces</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">How modern businesses are prioritizing eco-friendly materials and energy-efficient designs in their new headquarters.</p>
-                    </div>
-                </a>
-                
-                <!-- Blog Card 2 -->
-                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden">
-                        <img src="asset/idea_bedroom_1783442834138.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                            <span class="text-brandGold">Interior</span> &bull; <span>Sep 28, 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">Maximizing Natural Light in Residential Villas</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Strategic placement of floor-to-ceiling windows to enhance mood and reduce electricity consumption.</p>
-                    </div>
-                </a>
-
-                <!-- Blog Card 3 -->
-                <a href="blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden">
-                        <img src="asset/project_kitchen_1783442824055.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-3 text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                            <span class="text-brandGold">Design</span> &bull; <span>Sep 15, 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold dark:text-white mb-2 group-hover:text-brandGold transition-colors">Dark Charcoal vs. White Marble</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Exploring the striking visual contrast that is dominating luxury kitchen designs this year.</p>
-                    </div>
-                </a>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <% if (blogs && blogs.length > 0) { %>
+                    <% blogs.slice(0,3).forEach(b => { %>
+                        <a href="/blog.html" class="group block rounded-2xl overflow-hidden bg-gray-50 dark:bg-darkSurface border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2">
+                            <div class="h-48 overflow-hidden">
+                                <img src="<%= b.imageUrl || 'https://via.placeholder.com/400x300?text=Blog+Image' %>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-4 text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 mb-4 uppercase">
+                                    <span><%= new Date(b.createdAt).toLocaleDateString() %></span>
+                                </div>
+                                <h3 class="text-xl font-bold dark:text-white mb-3 group-hover:text-brandGold transition-colors"><%= b.title %></h3>
+                            </div>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500">No blog posts yet.</p>
+                <% } %>
             </div>
             
             <div class="mt-8 text-center md:hidden">
@@ -528,4 +541,5 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
 

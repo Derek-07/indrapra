@@ -30,9 +30,27 @@ const projectSchema = new mongoose.Schema({
     status: { type: String, default: 'Planning' }, // Planning, Construction, Finishing, Completed
     progress: { type: Number, default: 0 },
     managerName: { type: String, default: 'Admin' },
+    imageUrl: { type: String, default: '' },
+    description: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now }
 });
 const Project = mongoose.model('Project', projectSchema);
+
+const blogSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    imageUrl: { type: String, default: '' },
+    createdAt: { type: Date, default: Date.now }
+});
+const Blog = mongoose.model('Blog', blogSchema);
+
+const testimonialSchema = new mongoose.Schema({
+    authorName: { type: String, required: true },
+    role: { type: String, default: 'Client' },
+    quote: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now }
+});
+const Testimonial = mongoose.model('Testimonial', testimonialSchema);
 
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
@@ -126,15 +144,34 @@ app.use((req, res, next) => {
 // --- ROUTES ---
 
 // Public Pages
-app.get('/', (req, res) => res.render('index'));
+// Public Routes
+app.get('/', async (req, res) => {
+    try {
+        const blogs = await Blog.find({}).sort({ createdAt: -1 }).limit(3);
+        const testimonials = await Testimonial.find({}).sort({ createdAt: -1 });
+        const projects = await Project.find({}).sort({ createdAt: -1 }).limit(3);
+        res.render('index', { content: contentCache || {}, blogs, testimonials, projects });
+    } catch(err) { res.status(500).send('Error loading page'); }
+});
 app.get('/index.html', (req, res) => res.redirect('/'));
-app.get('/about.html', (req, res) => res.render('about'));
-app.get('/projects.html', (req, res) => res.render('projects'));
-app.get('/project-detail.html', (req, res) => res.render('project-detail'));
-app.get('/design-ideas.html', (req, res) => res.render('design-ideas'));
-app.get('/logo-upgrade.html', (req, res) => res.render('logo-upgrade'));
-app.get('/reach-us.html', (req, res) => res.render('reach-us'));
-app.get('/blog.html', (req, res) => res.render('blog'));
+
+app.get('/about.html', (req, res) => res.render('about', { content: contentCache || {} }));
+app.get('/projects.html', async (req, res) => {
+    try {
+        const projects = await Project.find({}).sort({ createdAt: -1 });
+        res.render('projects', { content: contentCache || {}, projects });
+    } catch(err) { res.status(500).send('Error loading page'); }
+});
+app.get('/project-detail.html', (req, res) => res.render('project-detail', { content: contentCache || {} }));
+app.get('/design-ideas.html', (req, res) => res.render('design-ideas', { content: contentCache || {} }));
+app.get('/logo-upgrade.html', (req, res) => res.render('logo-upgrade', { content: contentCache || {} }));
+app.get('/reach-us.html', (req, res) => res.render('reach-us', { content: contentCache || {} }));
+app.get('/blog.html', async (req, res) => {
+    try {
+        const blogs = await Blog.find({}).sort({ createdAt: -1 });
+        res.render('blog', { content: contentCache || {}, blogs });
+    } catch(err) { res.status(500).send('Error loading page'); }
+});
 app.get('/login.html', (req, res) => res.render('login', { error: null }));
 app.get('/signup.html', (req, res) => res.render('signup', { error: null, success: null }));
 
@@ -203,7 +240,9 @@ app.get('/admin', async (req, res) => {
         const users = await User.find({ role: 'user' }).populate('assignedProject').sort({ createdAt: -1 });
         const contents = await Content.find({});
         const projects = await Project.find({}).sort({ createdAt: -1 });
-        res.render('admin', { users: users || [], contents: contents || [], projects: projects || [] });
+        const blogs = await Blog.find({}).sort({ createdAt: -1 });
+        const testimonials = await Testimonial.find({}).sort({ createdAt: -1 });
+        res.render('admin', { users: users || [], contents: contents || [], projects: projects || [], blogs: blogs || [], testimonials: testimonials || [] });
     } catch (err) {
         res.status(500).send('Error loading admin dashboard');
     }
@@ -270,6 +309,66 @@ app.post('/admin/users/assign', async (req, res) => {
     }
 });
 
+// Blog Routes
+app.post('/admin/blogs/new', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Blog.create({
+            title: req.body.title,
+            content: req.body.content,
+            imageUrl: req.body.imageUrl || ''
+        });
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error creating blog');
+    }
+});
+
+app.post('/admin/blogs/delete/:id', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Blog.findByIdAndDelete(req.params.id);
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error deleting blog');
+    }
+});
+
+// Testimonial Routes
+app.post('/admin/testimonials/new', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Testimonial.create({
+            authorName: req.body.authorName,
+            role: req.body.role || 'Client',
+            quote: req.body.quote
+        });
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error creating testimonial');
+    }
+});
+
+app.post('/admin/testimonials/delete/:id', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Testimonial.findByIdAndDelete(req.params.id);
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error deleting testimonial');
+    }
+});
+
+// Project Delete
+app.post('/admin/projects/delete/:id', async (req, res) => {
+    if (!req.session.user || req.session.user.role !== 'admin') return res.status(403).send('Unauthorized');
+    try {
+        await Project.findByIdAndDelete(req.params.id);
+        res.redirect('/admin');
+    } catch (err) {
+        res.status(500).send('Error deleting project');
+    }
+});
 // Export the app for Vercel
 module.exports = app;
 
@@ -279,6 +378,9 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
+
+
 
 
 
