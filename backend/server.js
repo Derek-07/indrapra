@@ -56,12 +56,17 @@ async function loadContentCache(callback) {
     }
 }
 
-// Database Connection
-mongoose.connect(MONGO_URI)
-    .then(async () => {
-        console.log('âœ… Connected to MongoDB Atlas');
+let isConnected = false;
+async function connectDB() {
+    if (isConnected) return;
+    try {
+        await mongoose.connect(MONGO_URI, {
+            serverSelectionTimeoutMS: 5000
+        });
+        isConnected = true;
+        console.log('Connected to MongoDB Atlas (Serverless)');
         
-        // Seed initial content if DB is empty
+        // Seed initial content
         const contentCount = await Content.countDocuments();
         if (contentCount === 0) {
             await Content.insertMany([
@@ -69,10 +74,29 @@ mongoose.connect(MONGO_URI)
                 { key: 'hero_subtitle', value: 'Building modern spaces with precision, quality, and lasting value.' },
                 { key: 'about_title', value: 'Building Your Vision With Excellence' }
             ]);
-            console.log('Seeded default CMS content');
         }
 
-        // Seed admin user if not exists
+        // Seed admin user
+        const adminExists = await User.findOne({ role: 'admin' });
+        if (!adminExists) {
+            await User.create({
+                email: 'Admin@gmail.com',
+                password: 'Admin@12345',
+                status: 'Approved',
+                role: 'admin'
+            });
+        }
+        
+        loadContentCache();
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
+    }
+}
+
+app.use(async (req, res, next) => {
+    await connectDB();
+    next();
+});        // Seed admin user if not exists
         const adminExists = await User.findOne({ role: 'admin' });
         if (!adminExists) {
             await User.create({
@@ -219,5 +243,6 @@ if (require.main === module) {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
 }
+
 
 
