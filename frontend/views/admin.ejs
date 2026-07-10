@@ -155,7 +155,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <% projects.forEach(proj => { %>
                     <div class="bg-darkSurface border border-gray-800 rounded-xl shadow p-6 relative">
-                        <img src="<%= (proj.imageUrl && proj.imageUrl.trim() !== '') ? (proj.imageUrl.startsWith('http') ? proj.imageUrl : '/' + proj.imageUrl) : '/asset/image/commercial/card_commercial.jpg' %>" class="w-full h-32 object-cover rounded-lg mb-4">
+                        <img src="<%= (proj.imageUrl && proj.imageUrl.trim() !== '') ? (proj.imageUrl.startsWith('http') ? proj.imageUrl : '/' + proj.imageUrl) : '/asset/card_commercial_1783442002069.jpg' %>" class="w-full h-32 object-cover rounded-lg mb-4">
                         <h3 class="font-bold text-lg"><%= proj.title %></h3>
                         <p class="text-sm text-gray-400 mb-4">Client: <%= proj.clientName %> | Status: <%= proj.status %></p>
                         
@@ -220,7 +220,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <% blogs.forEach(blog => { %>
                     <div class="bg-darkSurface border border-gray-800 rounded-xl shadow p-6">
-                        <img src="<%= (blog.imageUrl && blog.imageUrl.trim() !== '') ? blog.imageUrl : '/asset/image/residential/idea_bathroom.jpg' %>" class="w-full h-32 object-cover rounded-lg mb-4">
+                        <img src="<%= (blog.imageUrl && blog.imageUrl.trim() !== '') ? blog.imageUrl : '/asset/card_residential_1783441988273.jpg' %>" class="w-full h-32 object-cover rounded-lg mb-4">
                         <h3 class="font-bold text-lg"><%= blog.title %></h3>
                         <p class="text-xs text-gray-400 mb-4"><%= new Date(blog.createdAt).toLocaleDateString() %></p>
                                                 <div class="flex gap-4">
