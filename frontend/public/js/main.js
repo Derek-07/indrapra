@@ -361,21 +361,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Secret Admin Access (Triple Click Footer) ---
 document.addEventListener('DOMContentLoaded', () => {
-    const allDivs = document.querySelectorAll('div');
-    allDivs.forEach(div => {
+    const footers = document.querySelectorAll('div');
+    let targetFooter = null;
+    footers.forEach(div => {
         if (div.innerText && div.innerText.includes('2026 Indraprastha Construction')) {
-            let clickCount = 0;
-            let clickTimer;
-            div.addEventListener('click', () => {
-                clickCount++;
-                if (clickCount === 3) {
-                    window.location.href = '/admin';
-                }
-                clearTimeout(clickTimer);
-                clickTimer = setTimeout(() => {
-                    clickCount = 0;
-                }, 1000); // Reset count after 1 second
-            });
+            targetFooter = div;
         }
     });
+
+    if (targetFooter) {
+        // Prevent zoom on mobile & text selection
+        targetFooter.style.touchAction = 'manipulation';
+        targetFooter.style.userSelect = 'none';
+        targetFooter.style.cursor = 'pointer';
+
+        let clickCount = 0;
+        let clickTimer;
+        
+        targetFooter.addEventListener('click', (e) => {
+            e.preventDefault();
+            clickCount++;
+            
+            if (clickCount === 3) {
+                window.location.href = '/admin';
+                clickCount = 0;
+            }
+            
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 2500); // 2.5 seconds to do 3 taps
+        });
+    }
 });
