@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ï»¿document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Interactive Testimonial Slider ---
 const testimonials = [
-    { text: "Indraprastha Construction handled our project with professionalism and precision. Everything was well-organized.", author: "— Sarah Collins, Business Owner" },
-    { text: "Their attention to detail and commitment to quality is unmatched. Truly the best builders in the city.", author: "— Michael Chang, Homeowner" },
-    { text: "Delivered on time and within budget. The glassmorphism and modern designs exceeded our expectations.", author: "— Emma Roberts, Tech Startup CEO" }
+    { text: "Indraprastha Construction handled our project with professionalism and precision. Everything was well-organized.", author: "â€” Sarah Collins, Business Owner" },
+    { text: "Their attention to detail and commitment to quality is unmatched. Truly the best builders in the city.", author: "â€” Michael Chang, Homeowner" },
+    { text: "Delivered on time and within budget. The glassmorphism and modern designs exceeded our expectations.", author: "â€” Emma Roberts, Tech Startup CEO" }
 ];
 let currentTestimonial = 0;
 
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- AI Assistant UI (Premium Add-on Mockup) ---
 document.addEventListener('DOMContentLoaded', () => {
     // Inject AI Assistant button and chat window
-    const aiHTML = \
+    const aiHTML = `
         <div id="ai-assistant-wrapper" class="fixed bottom-6 left-6 z-50">
             <!-- Chat Window (Hidden by default) -->
             <div id="ai-chat-window" class="hidden w-80 bg-white dark:bg-darkSurface rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden mb-4 transform transition-all scale-95 opacity-0 origin-bottom-left">
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </button>
         </div>
-    \;
+    `;
 
     document.body.insertAdjacentHTML('beforeend', aiHTML);
 
@@ -356,4 +356,5 @@ document.addEventListener('DOMContentLoaded', () => {
     aiToggleBtn.addEventListener('click', toggleChat);
     aiCloseBtn.addEventListener('click', toggleChat);
 });
+
 
